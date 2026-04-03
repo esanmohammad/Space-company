@@ -1,0 +1,100 @@
+{
+  "projectName": "Space-company",
+  "stack": "react",
+  "stages": {
+    "analyze": {
+      "status": "running",
+      "agentIds": [
+        "d6c5f4e1-031d-4c61-bc2d-26e532c0dd34"
+      ],
+      "artifact": null,
+      "startedAt": 1775230155283
+    },
+    "architect": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "plan": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "build": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "test": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "evaluate": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    }
+  },
+  "agents": [
+    {
+      "id": "d6c5f4e1-031d-4c61-bc2d-26e532c0dd34",
+      "name": "analyst-react",
+      "persona": "analyst",
+      "stack": "react",
+      "status": "running",
+      "pid": 8088,
+      "sessionId": "291a3963-157b-4cc1-bef7-288348ba4984",
+      "model": "sonnet",
+      "permissionMode": "auto",
+      "startedAt": 1775230155283,
+      "finishedAt": null,
+      "cost": {
+        "totalUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0,
+        "durationMs": 0
+      },
+      "output": "",
+      "error": null,
+      "parentId": null,
+      "childIds": [],
+      "disallowedTools": [
+        "Bash",
+        "Edit",
+        "NotebookEdit"
+      ],
+      "appendSystemPrompt": "SYSTEM ENFORCEMENT: Your output file MUST be named exactly REQUIREMENTS.md.\nSYSTEM ENFORCEMENT: REQUIREMENTS.md MUST contain these sections in order: ## 0. Original Requirement, ## 1. Summary, ## 2. Scope, ## 3. Functional Requirements, ## 4. Data Requirements, ## 5. UI/UX, ## 6. Non-Functional Requirements, ## 7. Integration, ## 8. Testing, ## 9. Rollout, ## 10. Open Questions, ## 11. Change Tracking, ## 12. Appendix.\nSYSTEM ENFORCEMENT: Section 3 MUST contain user stories in \"As a [user] I want [thing] So that [reason]\" format with Given/When/Then acceptance criteria.\nSYSTEM ENFORCEMENT: Do NOT write migration plans, decision tables, or free-form documents. Follow the template exactly."
+    }
+  ],
+  "totalCost": {
+    "totalUsd": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "durationMs": 0
+  },
+  "violations": [],
+  "updatedAt": 1775230155283,
+  "mayday": {
+    "active": true,
+    "featureRequest": "Build a space tourism company landing page and contact page inside turbo repo with react ant design and minimalist look",
+    "currentStage": "analyze",
+    "fixIteration": 0,
+    "maxFixIterations": 5,
+    "lastTestOutput": null,
+    "lastTestPassed": null,
+    "failureCount": null,
+    "fixAgentIds": [],
+    "userMessages": [],
+    "startedAt": 1775230155183,
+    "pausedAt": null,
+    "error": null,
+    "maxFixBudgetUsd": 15,
+    "approvalRequired": false,
+    "pendingApproval": null
+  }
+}

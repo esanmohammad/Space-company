@@ -1,0 +1,6 @@
+# Playwright E2E testing configuration for swarm test stage
+# Uncomment and configure as needed:
+# baseUrl: http://localhost:3000
+# authStorageState: .auth/storageState.json
+# globalSetupScript: e2e/global-setup.ts
+# testDir: e2e
