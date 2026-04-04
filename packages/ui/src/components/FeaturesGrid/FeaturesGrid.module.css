@@ -1,6 +1,7 @@
 .grid {
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden; /* prevent ant-row negative-gutter margins from creating horizontal scroll */
 }
 
 .title {

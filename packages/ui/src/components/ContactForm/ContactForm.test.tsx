@@ -6,8 +6,11 @@ import { expect as jestExpect } from 'vitest';
 
 jestExpect.extend(toHaveNoViolations);
 
-const mockNotificationSuccess = vi.fn();
-const mockNotificationError = vi.fn();
+// Use vi.hoisted so mock factory can reference these vars (they are created before hoisting)
+const { mockNotificationSuccess, mockNotificationError } = vi.hoisted(() => ({
+  mockNotificationSuccess: vi.fn(),
+  mockNotificationError: vi.fn(),
+}));
 
 vi.mock('antd', async (importOriginal) => {
   const actual = await importOriginal<typeof import('antd')>();

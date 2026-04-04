@@ -1,7 +1,7 @@
 projectName: Space-company
 stack: react
 model: sonnet
-maxBudgetUsd: 20
+maxBudgetUsd: 1000
 promptsDir: bundled
 wsPort: 36398
 dashboardPort: 11182

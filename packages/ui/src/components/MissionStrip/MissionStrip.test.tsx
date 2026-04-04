@@ -30,7 +30,9 @@ describe('MissionStrip', () => {
       <MissionStrip {...defaultProps} backgroundImage={bgUrl} />,
     );
     const section = getByTestId('mission-strip');
-    expect(section.style.backgroundImage).toBe(`url(${bgUrl})`);
+    // jsdom may add quotes around the URL, accept both forms
+    const bg = section.style.backgroundImage;
+    expect(bg === `url(${bgUrl})` || bg === `url("${bgUrl}")`).toBe(true);
   });
 
   it('renders no <img> element for background', () => {

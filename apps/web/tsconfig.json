@@ -2,6 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@space-tourism/tsconfig/base.json",
   "compilerOptions": {
+    "jsx": "react",
+   
     "types": ["vite/client"]
   },
   "include": ["src"]
