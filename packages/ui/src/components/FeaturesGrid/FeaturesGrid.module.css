@@ -1,0 +1,10 @@
+.grid {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}

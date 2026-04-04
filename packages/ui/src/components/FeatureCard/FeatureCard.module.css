@@ -1,0 +1,21 @@
+.card {
+  background: #14141F;
+  border-radius: 4px;
+  padding: 0;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(79, 142, 247, 0.2);
+}
+
+.iconWrapper {
+  font-size: 2rem;
+  color: #4F8EF7;
+  margin-bottom: 1rem;
+  display: block;
+}

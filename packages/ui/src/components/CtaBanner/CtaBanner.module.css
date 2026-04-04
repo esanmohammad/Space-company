@@ -1,0 +1,24 @@
+.banner {
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0D1B3E 0%, #1a1a4e 100%);
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.headline {
+  color: #E8E8E8;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 320px) {
+  .banner {
+    overflow-x: hidden;
+  }
+}
