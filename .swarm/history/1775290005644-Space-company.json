@@ -1,0 +1,64 @@
+{
+  "runId": "caca1842-ad1b-4569-8ab6-07a5bd60ba13",
+  "timestamp": 1775290005644,
+  "projectName": "Space-company",
+  "stack": "react",
+  "totalCost": {
+    "totalUsd": 11.19931585,
+    "inputTokens": 233,
+    "outputTokens": 197343,
+    "cacheReadTokens": 17247250,
+    "cacheWriteTokens": 493813,
+    "durationMs": 6194796
+  },
+  "stagesSummary": {
+    "analyze": "skipped",
+    "architect": "skipped",
+    "plan": "skipped",
+    "build": "error",
+    "test": "done",
+    "evaluate": "pending"
+  },
+  "featureRequest": "Build a space tourism company landing page and contact page inside turbo repo with react ant design and minimalist look",
+  "durationMs": 4346095,
+  "stageBreakdowns": [
+    {
+      "name": "analyze",
+      "cost": 0.30693725,
+      "durationMs": 174263,
+      "status": "skipped"
+    },
+    {
+      "name": "architect",
+      "cost": 0.6675423,
+      "durationMs": 526321,
+      "status": "skipped"
+    },
+    {
+      "name": "plan",
+      "cost": 1.0174593,
+      "durationMs": 367377,
+      "status": "skipped"
+    },
+    {
+      "name": "build",
+      "cost": 0.42517454999999993,
+      "durationMs": -1775285659626,
+      "status": "error"
+    },
+    {
+      "name": "test",
+      "cost": 10.7741413,
+      "durationMs": 4229533,
+      "status": "done"
+    },
+    {
+      "name": "evaluate",
+      "cost": 0,
+      "durationMs": 0,
+      "status": "pending"
+    }
+  ],
+  "fixIterations": 0,
+  "activityType": "pipeline"
+}

@@ -490,22 +490,22 @@
       "name": "test-runner-vitest-0",
       "persona": "engineer",
       "stack": "react",
-      "status": "running",
+      "status": "done",
       "pid": 20254,
       "sessionId": "fa80931f-b05e-462a-8532-41a10e2ff439",
       "model": "sonnet",
       "permissionMode": "auto",
       "startedAt": 1775286500925,
-      "finishedAt": null,
+      "finishedAt": 1775288366676,
       "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
+        "totalUsd": 4.2344179,
+        "inputTokens": 103,
+        "outputTokens": 56283,
+        "cacheReadTokens": 8783865,
+        "cacheWriteTokens": 135382,
+        "durationMs": 1861936
       },
-      "output": "",
+      "output": "All tests pass. Here's the final summary:\n\n---\n\n## ✅ Test Implementation Complete\n\n### Results Summary\n\n| Package | Test Files | Tests | Status |\n|---------|-----------|-------|--------|\n| `packages/ui` | 12 files | **94 passed** | ✅ All green |\n| `apps/web` | 2 files | **12 passed** | ✅ All green |\n| **Total** | **14 files** | **106 passed, 0 failed** | ✅ |\n\n### Files Created/Modified\n\n**New test files created:**\n- `packages/ui/src/utils/mockSubmit.test.ts` — TC-043, TC-044 (mockContactSubmit utility)\n- `packages/ui/src/theme/spaceTheme.test.ts` — TC-045 (design token values)\n- `apps/web/src/__tests__/navigation.test.tsx` — TC-046, TC-047 (routing integration)\n- `apps/web/src/__tests__/theme.test.tsx` — TC-048 (ConfigProvider + spaceTheme)\n\n**New config files created:**\n- `packages/ui/vitest.config.ts` — jsdom environment, icon CJS interop, test setup\n- `packages/ui/src/test-setup.ts` — RTL cleanup + `window.matchMedia` mock\n- `apps/web/vitest.config.ts` — jsdom environment, @vitejs/plugin-react\n- `apps/web/src/test-setup.ts` — RTL cleanup + `window.matchMedia` mock\n\n**Test files fixed:**\n- `packages/ui/src/components/ContactForm/ContactForm.test.tsx` — fixed `vi.hoisted()` for mock variables\n- `packages/ui/src/components/Navbar/Navbar.test.tsx` — fixed drawer close assertions + CSS display:none workaround\n- `packages/ui/src/components/MissionStrip/MissionStrip.test.tsx` — fixed background-image URL quote handling\n- `packages/ui/src/utils/mockSubmit.test.ts` — fixed unhandled rejection pattern\n\n**JSON results:** saved to `.swarm/test-results.json`\n\n### Key Fixes Made\n1. **RTL cleanup**: Added `afterEach(cleanup)` setup file since `globals: false` prevents RTL's auto-cleanup\n2. **`window.matchMedia`**: Mocked in setup files (required by AntD responsive grid)\n3. **`@ant-design/icons` CJS interop**: Used `deps.inline` in `packages/ui` config; direct `vi.mock` per icon in `apps/web` navigation tests\n4. **`vi.mock` hoisting**: Used `vi.hoisted()` for variables referenced in mock factories\n5. **AntD Drawer closure**: Checked `.ant-drawer-open` CSS class instead of text visibility (drawer keeps content in DOM with animations)\n6. **CSS display:none**: Removed `css: true` config so jsdom doesn't apply hamburger's `display: none`",
       "error": null,
       "parentId": null,
       "childIds": [
@@ -546,13 +546,13 @@
       "name": "sub:Explore project structure",
       "persona": "engineer",
       "stack": "react",
-      "status": "running",
+      "status": "done",
       "pid": null,
       "sessionId": "virtual-toolu_01FosUUjv9SEzbsV4LmLZe39",
       "model": "sonnet",
       "permissionMode": "auto",
       "startedAt": 1775286511696,
-      "finishedAt": null,
+      "finishedAt": 1775288366674,
       "cost": {
         "totalUsd": 0,
         "inputTokens": 0,
@@ -561,7 +561,7 @@
         "cacheWriteTokens": 0,
         "durationMs": 0
       },
-      "output": "",
+      "output": "Completed (parent process finished)",
       "error": null,
       "parentId": "cc833d98-e2e7-46ef-9461-82cb6be1859a",
       "childIds": []
@@ -643,12 +643,12 @@
     }
   ],
   "totalCost": {
-    "totalUsd": 1.31048025,
-    "inputTokens": 10,
-    "outputTokens": 34789,
-    "cacheReadTokens": 157034,
-    "cacheWriteTokens": 120455,
-    "durationMs": 832451
+    "totalUsd": 5.54489815,
+    "inputTokens": 113,
+    "outputTokens": 91072,
+    "cacheReadTokens": 8940899,
+    "cacheWriteTokens": 255837,
+    "durationMs": 2694387
   },
   "violations": [
     {
@@ -707,7 +707,7 @@
       }
     }
   ],
-  "updatedAt": 1775287051158,
+  "updatedAt": 1775288366676,
   "mayday": {
     "active": true,
     "featureRequest": "Build a space tourism company landing page and contact page inside turbo repo with react ant design and minimalist look",
