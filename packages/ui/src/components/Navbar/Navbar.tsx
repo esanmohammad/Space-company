@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer, Button } from 'antd';
-import { MenuOutlined } from '@ant-design/icons/lib/icons/MenuOutlined';
+import { MenuOutlined } from '@ant-design/icons';
 import type { NavLink } from '../../types';
 import styles from './Navbar.module.css';
 

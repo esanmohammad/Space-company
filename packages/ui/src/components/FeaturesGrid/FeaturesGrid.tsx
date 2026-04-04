@@ -13,7 +13,7 @@ const FeaturesGrid = React.memo<FeaturesGridProps>(function FeaturesGrid({
   features,
   sectionTitle,
 }) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (import.meta.env.DEV) {
     if (features.length < 3) {
       console.warn(
         `[FeaturesGrid] Expected at least 3 features, but received ${features.length}.`
