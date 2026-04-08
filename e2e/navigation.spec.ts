@@ -58,3 +58,32 @@ test.describe('Navbar routing and footer', () => {
     await expect(page.locator('footer')).toBeVisible({ timeout: 10_000 });
   });
 });
+
+/**
+ * Brand name and social links verification.
+ */
+test.describe('Brand name and social links', () => {
+  test('navbar displays "Moonshot" brand name', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('[data-testid="navbar"]')).toBeVisible({ timeout: 10_000 });
+    await expect(page.locator('[data-testid="navbar"] a').first()).toHaveText('Moonshot');
+  });
+
+  test('social link hrefs contain "moonshot"', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await expect(page.locator('[data-testid="footer"]')).toBeVisible({ timeout: 10_000 });
+
+    const socialLinks = page.locator('[data-testid="footer"] a[target="_blank"]');
+    const count = await socialLinks.count();
+    expect(count).toBeGreaterThanOrEqual(1);
+
+    for (let i = 0; i < count; i++) {
+      const href = await socialLinks.nth(i).getAttribute('href');
+      expect(href).toBeTruthy();
+      expect(href!.toLowerCase()).toContain('moonshot');
+    }
+  });
+});

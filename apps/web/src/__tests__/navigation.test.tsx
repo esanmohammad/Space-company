@@ -47,7 +47,7 @@ function AppContent() {
   return (
     <>
       <Navbar
-        brandName="Stellar Horizons"
+        brandName="Moonshot"
         links={NAV_LINKS}
         currentPath={location.pathname}
       />

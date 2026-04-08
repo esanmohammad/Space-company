@@ -11,7 +11,7 @@ export const FEATURE_CARDS: FeatureCardData[] = [
     icon: React.createElement(RocketOutlined),
     title: 'Orbital Launches',
     description:
-      'Experience the raw power of lift-off as Stellar Horizons carries you beyond the atmosphere into the silence of low Earth orbit.',
+      'Experience the raw power of lift-off as Moonshot carries you beyond the atmosphere into the silence of low Earth orbit.',
   },
   {
     id: 'feature-destinations',

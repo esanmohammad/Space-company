@@ -8,8 +8,8 @@ import type { CompanyInfo } from '../../types';
 jestExpect.extend(toHaveNoViolations);
 
 const companyInfo: CompanyInfo = {
-  address: '1 Stellar Drive, Cape Canaveral, FL 32920, USA',
-  email: 'contact@stellarhorizons.com',
+  address: '1 Moonshot Drive, Cape Canaveral, FL 32920, USA',
+  email: 'contact@moonshot.com',
   phone: '+1 (800) 867-5309',
   tagline: 'Where humanity meets the stars — your journey beyond Earth starts here.',
 };

@@ -11,9 +11,9 @@ const LandingPage = lazy(() => import('./pages/LandingPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/stellar-horizons', icon: <GithubOutlined /> },
-  { label: 'Twitter', href: 'https://twitter.com/stellarhorizons', icon: <TwitterOutlined /> },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/stellar-horizons', icon: <LinkedinOutlined /> },
+  { label: 'GitHub', href: 'https://github.com/moonshot', icon: <GithubOutlined /> },
+  { label: 'Twitter', href: 'https://twitter.com/moonshot', icon: <TwitterOutlined /> },
+  { label: 'LinkedIn', href: 'https://linkedin.com/company/moonshot', icon: <LinkedinOutlined /> },
 ];
 
 const loadingFallback = (
@@ -36,7 +36,7 @@ export default function App() {
   return (
     <>
       <Navbar
-        brandName="Stellar Horizons"
+        brandName="Moonshot"
         links={NAV_LINKS}
         currentPath={location.pathname}
       />
@@ -49,7 +49,7 @@ export default function App() {
         </Suspense>
       </main>
       <Footer
-        companyName="Stellar Horizons"
+        companyName="Moonshot"
         tagline={COMPANY_INFO.tagline}
         socialLinks={SOCIAL_LINKS}
       />

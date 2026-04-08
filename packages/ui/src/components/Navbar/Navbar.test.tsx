@@ -51,26 +51,26 @@ function getHamburger() {
 describe('Navbar', () => {
   describe('Desktop rendering (TC-028)', () => {
     it('renders the brand name', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
-      expect(screen.getByText('Stellar Horizons')).toBeTruthy();
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
+      expect(screen.getByText('Moonshot')).toBeTruthy();
     });
 
     it('renders all nav links', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       expect(screen.getAllByText('Home').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Destinations').length).toBeGreaterThan(0);
       expect(screen.getAllByText('About').length).toBeGreaterThan(0);
     });
 
     it('sets aria-current="page" on the active link', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/destinations" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/destinations" />);
       const activeLinks = screen.getAllByRole('link', { name: 'Destinations' });
       const activeLink = activeLinks.find((el) => el.getAttribute('aria-current') === 'page');
       expect(activeLink).toBeTruthy();
     });
 
     it('does not set aria-current on non-active links', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/destinations" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/destinations" />);
       const homeLinks = screen.getAllByRole('link', { name: 'Home' });
       homeLinks.forEach((link) => {
         expect(link.getAttribute('aria-current')).not.toBe('page');
@@ -79,21 +79,21 @@ describe('Navbar', () => {
 
     it('renders a <nav> landmark', () => {
       const { container } = render(
-        <Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />,
+        <Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />,
       );
       expect(container.querySelector('nav')).toBeTruthy();
     });
 
     it('renders inside a <header> element', () => {
       const { container } = render(
-        <Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />,
+        <Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />,
       );
       expect(container.querySelector('header')).toBeTruthy();
     });
 
     it('has no accessibility violations (jest-axe)', async () => {
       const { container } = render(
-        <Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />,
+        <Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />,
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -109,20 +109,20 @@ describe('Navbar', () => {
      */
 
     it('TC-030: hamburger button is present in the DOM with correct aria-label', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       const hamburger = getHamburger();
       expect(hamburger).not.toBeNull();
       expect(hamburger!.getAttribute('aria-label')).toBe('Open navigation');
     });
 
     it('TC-030: hamburger button has aria-expanded="false" initially', () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       const hamburger = getHamburger();
       expect(hamburger!.getAttribute('aria-expanded')).toBe('false');
     });
 
     it('TC-031: clicking hamburger opens the drawer (title "Site navigation" visible)', async () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       const hamburger = getHamburger()!;
       fireEvent.click(hamburger);
       await waitFor(() => {
@@ -131,7 +131,7 @@ describe('Navbar', () => {
     });
 
     it('TC-031: drawer contains nav links after hamburger click', async () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       fireEvent.click(getHamburger()!);
       await waitFor(() => {
         expect(screen.getByText('Site navigation')).toBeTruthy();
@@ -142,7 +142,7 @@ describe('Navbar', () => {
     });
 
     it('TC-031: clicking a drawer link closes the drawer', async () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       fireEvent.click(getHamburger()!);
       await waitFor(() => {
         expect(screen.getByText('Site navigation')).toBeTruthy();
@@ -157,7 +157,7 @@ describe('Navbar', () => {
     });
 
     it('TC-032: pressing Escape closes the open drawer', async () => {
-      render(<Navbar brandName="Stellar Horizons" links={TEST_LINKS} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={TEST_LINKS} currentPath="/" />);
       fireEvent.click(getHamburger()!);
       await waitFor(() => {
         expect(screen.getByText('Site navigation')).toBeTruthy();
@@ -172,12 +172,12 @@ describe('Navbar', () => {
 
   describe('Edge cases (TC-029)', () => {
     it('TC-029: renders brand only without error when links array is empty', () => {
-      render(<Navbar brandName="Stellar Horizons" links={[]} currentPath="/" />);
-      expect(screen.getByText('Stellar Horizons')).toBeTruthy();
+      render(<Navbar brandName="Moonshot" links={[]} currentPath="/" />);
+      expect(screen.getByText('Moonshot')).toBeTruthy();
     });
 
     it('TC-029: no nav links rendered when links array is empty', () => {
-      render(<Navbar brandName="Stellar Horizons" links={[]} currentPath="/" />);
+      render(<Navbar brandName="Moonshot" links={[]} currentPath="/" />);
       const links = screen.queryAllByRole('link');
       // Only the brand link should be visible
       expect(links.length).toBeLessThanOrEqual(1);

@@ -11,6 +11,32 @@ test.describe('Landing page render and no-overflow', () => {
     await page.waitForLoadState('networkidle');
   });
 
+  // Brand verification — "Moonshot" appears in key sections
+  test('navbar brand text contains "Moonshot"', async ({ page }) => {
+    const navbar = page.locator('[data-testid="navbar"]');
+    await expect(navbar).toBeVisible({ timeout: 10_000 });
+    await expect(navbar).toContainText('Moonshot');
+  });
+
+  test('hero subheadline contains "Moonshot"', async ({ page }) => {
+    const subheadline = page.locator('[data-testid="hero"] p').first();
+    await expect(subheadline).toBeVisible({ timeout: 10_000 });
+    await expect(subheadline).toContainText('Moonshot');
+  });
+
+  test('features section title contains "Moonshot"', async ({ page }) => {
+    const sectionTitle = page.locator('[data-testid="features"] h2, [data-testid="feature-grid"] h2, section h2').first();
+    await expect(sectionTitle).toBeVisible({ timeout: 10_000 });
+    await expect(sectionTitle).toContainText('Moonshot');
+  });
+
+  test('footer contains "Moonshot"', async ({ page }) => {
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    const footer = page.locator('footer');
+    await expect(footer).toBeVisible({ timeout: 10_000 });
+    await expect(footer).toContainText('Moonshot');
+  });
+
   // TC-001 — Hero section visible
   test('hero h1 is visible', async ({ page }) => {
     await expect(page.locator('h1').first()).toBeVisible({ timeout: 10_000 });

@@ -78,10 +78,14 @@ test.describe('Contact form validation and happy-path', () => {
     // Address element should be present
     await expect(page.locator('address')).toBeVisible();
 
-    // mailto link
+    // Address should contain "1 Moonshot Drive"
+    await expect(page.locator('address')).toContainText('1 Moonshot Drive');
+
+    // mailto link should point to contact@moonshot.com
     const emailLink = page.locator('a[href^="mailto:"]');
     await expect(emailLink).toBeVisible();
-    expect(await emailLink.getAttribute('href')).toMatch(/^mailto:/);
+    expect(await emailLink.getAttribute('href')).toBe('mailto:contact@moonshot.com');
+    await expect(emailLink).toContainText('contact@moonshot.com');
 
     // tel link
     const phoneLink = page.locator('a[href^="tel:"]');
