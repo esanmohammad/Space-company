@@ -19,17 +19,17 @@ export default function LandingPage() {
     <>
       <Hero
         headline="Your Journey to the Stars Begins Here"
-        subHeadline="Stellar Horizons offers exclusive space tourism experiences — from orbital launches to lunar flybys. Safety, luxury, and wonder, guaranteed."
+        subHeadline="Stark Space offers exclusive space tourism experiences — from orbital launches to lunar flybys. Safety, luxury, and wonder, guaranteed."
         ctaLabel="Book Your Mission"
         onCtaClick={handleCtaClick}
       />
       <FeaturesGrid
         features={FEATURE_CARDS}
-        sectionTitle="Why Choose Stellar Horizons"
+        sectionTitle="Why Choose Stark Space"
       />
       <MissionStrip
         title="Our Mission"
-        body="We believe the cosmos belongs to everyone. Stellar Horizons is committed to making space accessible, safe, and unforgettable for the next generation of explorers. Every mission we design is built on decades of aerospace expertise and a relentless passion for discovery."
+        body="We believe the cosmos belongs to everyone. Stark Space is committed to making space accessible, safe, and unforgettable for the next generation of explorers. Every mission we design is built on decades of aerospace expertise and a relentless passion for discovery."
       />
       <CtaBanner
         headline="Ready to Leave Earth Behind?"

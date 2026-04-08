@@ -97,4 +97,29 @@ test.describe('Landing page render and no-overflow', () => {
     // In a multi-column grid, at least 2 of 3 cards share the same row
     expect(uniqueTops.size).toBeLessThan(tops.length);
   });
+
+  // Brand name verification — "Stark Space"
+  test('navbar displays "Stark Space" brand text', async ({ page }) => {
+    const navbar = page.locator('[data-testid="navbar"]');
+    await expect(navbar).toBeVisible({ timeout: 10_000 });
+    await expect(navbar).toContainText('Stark Space');
+  });
+
+  test('hero subheadline contains "Stark Space"', async ({ page }) => {
+    const subheadline = page.locator('[data-testid="hero"] p').first();
+    await expect(subheadline).toBeVisible({ timeout: 10_000 });
+    await expect(subheadline).toContainText('Stark Space');
+  });
+
+  test('features section title contains "Stark Space"', async ({ page }) => {
+    const sectionTitle = page.locator('[data-testid="features-grid"] h2').first();
+    await expect(sectionTitle).toBeVisible({ timeout: 10_000 });
+    await expect(sectionTitle).toContainText('Stark Space');
+  });
+
+  test('mission strip contains "Stark Space"', async ({ page }) => {
+    const missionStrip = page.locator('[data-testid="mission-strip"]');
+    await expect(missionStrip).toBeVisible({ timeout: 10_000 });
+    await expect(missionStrip).toContainText('Stark Space');
+  });
 });

@@ -58,3 +58,30 @@ test.describe('Navbar routing and footer', () => {
     await expect(page.locator('footer')).toBeVisible({ timeout: 10_000 });
   });
 });
+
+/**
+ * Brand name verification — navbar and footer display "Stark Space".
+ */
+test.describe('Brand name verification in navigation', () => {
+  test('navbar brand text is "Stark Space" on landing page', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('[data-testid="navbar"]')).toBeVisible({ timeout: 10_000 });
+    await expect(page.locator('[data-testid="navbar"]')).toContainText('Stark Space');
+  });
+
+  test('navbar brand text is "Stark Space" on contact page', async ({ page }) => {
+    await page.goto('/contact');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('[data-testid="navbar"]')).toBeVisible({ timeout: 10_000 });
+    await expect(page.locator('[data-testid="navbar"]')).toContainText('Stark Space');
+  });
+
+  test('footer contains "Stark Space" text', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await expect(page.locator('footer')).toBeVisible({ timeout: 10_000 });
+    await expect(page.locator('footer')).toContainText('Stark Space');
+  });
+});

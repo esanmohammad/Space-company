@@ -88,4 +88,24 @@ test.describe('Contact form validation and happy-path', () => {
     await expect(phoneLink).toBeVisible();
     expect(await phoneLink.getAttribute('href')).toMatch(/^tel:/);
   });
+
+  // T011 — Verify updated company info (email and address)
+  test('T011: email link href contains contact@starkspace.com', async ({ page }) => {
+    const companyInfo = page.locator('[data-testid="company-info-block"]');
+    await expect(companyInfo).toBeVisible({ timeout: 10_000 });
+
+    const emailLink = page.locator('a[href^="mailto:"]');
+    await expect(emailLink).toBeVisible();
+    const href = await emailLink.getAttribute('href');
+    expect(href).toContain('contact@starkspace.com');
+  });
+
+  test('T011: address text contains "Stark Drive"', async ({ page }) => {
+    const companyInfo = page.locator('[data-testid="company-info-block"]');
+    await expect(companyInfo).toBeVisible({ timeout: 10_000 });
+
+    const addressEl = page.locator('address');
+    await expect(addressEl).toBeVisible();
+    await expect(addressEl).toContainText('Stark Drive');
+  });
 });

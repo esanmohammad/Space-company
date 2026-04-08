@@ -64,6 +64,12 @@ test.describe('Mobile navbar drawer', () => {
     expect(hasOverflow).toBe(false);
   });
 
+  // Brand name verification on mobile viewport
+  test('navbar displays "Stark Space" text on mobile viewport', async ({ page }) => {
+    const navbar = page.locator('[data-testid="navbar"]');
+    await expect(navbar).toContainText('Stark Space');
+  });
+
   test('no horizontal overflow at 375px on landing page', async ({ page }) => {
     const hasOverflow = await page.evaluate(() => {
       return document.documentElement.scrollWidth > window.innerWidth;

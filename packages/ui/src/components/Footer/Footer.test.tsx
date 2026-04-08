@@ -10,17 +10,17 @@ jestExpect.extend(toHaveNoViolations);
 const TEST_SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Follow us on Twitter',
-    href: 'https://twitter.com/stellarhorizons',
+    href: 'https://twitter.com/starkspace',
     icon: <span>TW</span>,
   },
   {
     label: 'Connect on LinkedIn',
-    href: 'https://linkedin.com/company/stellarhorizons',
+    href: 'https://linkedin.com/company/starkspace',
     icon: <span>LI</span>,
   },
   {
     label: 'Watch on YouTube',
-    href: 'https://youtube.com/@stellarhorizons',
+    href: 'https://youtube.com/@starkspace',
     icon: <span>YT</span>,
   },
 ];
@@ -30,20 +30,20 @@ describe('Footer', () => {
     it('renders copyright text containing the company name', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
         />
       );
       const footerEl = screen.getByRole('contentinfo');
-      expect(footerEl.textContent).toContain('Stellar Horizons');
+      expect(footerEl.textContent).toContain('Stark Space');
     });
 
     it('renders copyright text containing the provided year', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -56,7 +56,7 @@ describe('Footer', () => {
     it('uses the current year when year prop is not provided', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
         />
@@ -71,7 +71,7 @@ describe('Footer', () => {
     it('renders the tagline text', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -85,26 +85,26 @@ describe('Footer', () => {
     it('renders all social links with correct href', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
         />
       );
       const twitterLink = screen.getByRole('link', { name: 'Follow us on Twitter' });
-      expect(twitterLink.getAttribute('href')).toBe('https://twitter.com/stellarhorizons');
+      expect(twitterLink.getAttribute('href')).toBe('https://twitter.com/starkspace');
 
       const linkedinLink = screen.getByRole('link', { name: 'Connect on LinkedIn' });
-      expect(linkedinLink.getAttribute('href')).toBe('https://linkedin.com/company/stellarhorizons');
+      expect(linkedinLink.getAttribute('href')).toBe('https://linkedin.com/company/starkspace');
 
       const youtubeLink = screen.getByRole('link', { name: 'Watch on YouTube' });
-      expect(youtubeLink.getAttribute('href')).toBe('https://youtube.com/@stellarhorizons');
+      expect(youtubeLink.getAttribute('href')).toBe('https://youtube.com/@starkspace');
     });
 
     it('renders social links with correct aria-label', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -118,7 +118,7 @@ describe('Footer', () => {
     it('renders decorative icons with aria-hidden="true"', () => {
       const { container } = render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -133,7 +133,7 @@ describe('Footer', () => {
     it('renders inside a <footer> element', () => {
       const { container } = render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -145,7 +145,7 @@ describe('Footer', () => {
     it('is discoverable via the contentinfo landmark role', () => {
       render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -159,7 +159,7 @@ describe('Footer', () => {
     it('has no WCAG violations', async () => {
       const { container } = render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={TEST_SOCIAL_LINKS}
           year={2026}
@@ -172,7 +172,7 @@ describe('Footer', () => {
     it('has no WCAG violations with empty social links', async () => {
       const { container } = render(
         <Footer
-          companyName="Stellar Horizons"
+          companyName="Stark Space"
           tagline="Reach for the stars."
           socialLinks={[]}
           year={2026}
