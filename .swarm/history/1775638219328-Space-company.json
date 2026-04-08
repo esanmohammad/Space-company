@@ -1,0 +1,78 @@
+{
+  "runId": "d162afee-e9f1-40d7-9ab3-671c412336f4",
+  "timestamp": 1775638219328,
+  "projectName": "Space-company",
+  "stack": "react",
+  "totalCost": {
+    "totalUsd": 3.8874428500000002,
+    "inputTokens": 1647,
+    "outputTokens": 37237,
+    "cacheReadTokens": 2366755,
+    "cacheWriteTokens": 197387,
+    "durationMs": 1082034
+  },
+  "stagesSummary": {
+    "analyze": "done",
+    "architect": "done",
+    "plan": "done",
+    "build": "done",
+    "test": "pending",
+    "evaluate": "pending",
+    "validate": "error",
+    "ship": "pending"
+  },
+  "featureRequest": "Change the company name to stellar to Moonshot",
+  "durationMs": 885849,
+  "stageBreakdowns": [
+    {
+      "name": "analyze",
+      "cost": 0.50935895,
+      "durationMs": 129224,
+      "status": "done"
+    },
+    {
+      "name": "architect",
+      "cost": 0.44337355,
+      "durationMs": 187144,
+      "status": "done"
+    },
+    {
+      "name": "plan",
+      "cost": 0.3608688499999999,
+      "durationMs": 127068,
+      "status": "done"
+    },
+    {
+      "name": "build",
+      "cost": 2.5738415000000003,
+      "durationMs": -1775637778038,
+      "status": "done"
+    },
+    {
+      "name": "test",
+      "cost": 0,
+      "durationMs": 0,
+      "status": "pending"
+    },
+    {
+      "name": "evaluate",
+      "cost": 0,
+      "durationMs": 0,
+      "status": "pending"
+    },
+    {
+      "name": "validate",
+      "cost": 0,
+      "durationMs": 1780,
+      "status": "error"
+    },
+    {
+      "name": "ship",
+      "cost": 0,
+      "durationMs": 0,
+      "status": "pending"
+    }
+  ],
+  "fixIterations": 0,
+  "activityType": "pipeline"
+}
