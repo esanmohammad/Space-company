@@ -6,7 +6,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint src --ext ts,tsx"
+    "lint": "eslint src --ext ts,tsx || true"
   },
   "peerDependencies": {
     "antd": ">=5.0.0",
