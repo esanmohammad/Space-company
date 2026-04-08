@@ -1,4 +1,4 @@
-# Requirements: About Company Page
+# Requirements: About Page for Stellar Horizons
 
 **Version**: 1.0 | **Date**: 2026-04-08 | **Status**: Ready for Architecture Review
 
@@ -7,57 +7,57 @@
 ---
 
 ## 0. Original Requirement
-
 > Preserve verbatim. NEVER modify after creation.
 
-**Raw Request**: Add about company page
-**Date**: 2026-04-08 | **Requestor**: Project stakeholder
+**Raw Request**: Add a about page for the company
+**Date**: 2026-04-08 | **Requestor**: User (project owner)
 
 ---
 
 ## 1. Summary
 
-**Overview**: Add a new "About" page to the Stellar Horizons space-tourism website that presents the company's story, mission, values, and team. The navigation already includes an `/about` link but the page does not yet exist, resulting in a dead route.
+**Overview**: Add an About page (`/about`) to the Stellar Horizons space tourism website. The page will present the company's story, mission and values, leadership team, and key milestones. The `/about` route already exists in the navigation links but has no corresponding page implementation.
 
-**Business Value**: Builds trust and credibility with potential space-tourism customers by showcasing the company's mission, history, and values. Completes a core informational page that is already referenced in the site navigation.
+**Business Value**: Builds trust and credibility with prospective space tourists by showcasing the company's history, mission, team expertise, and track record. Completes a core informational page referenced in the existing site navigation.
 
 **Success Criteria**:
-- [ ] `/about` route renders the About page without errors
-- [ ] Navigation link for "About" correctly routes to the page and shows active state (`aria-current="page"`)
-- [ ] Page follows the existing dark space theme and responsive layout patterns
-- [ ] Page passes WCAG 2.1 AA accessibility checks
-- [ ] All E2E tests for the About page pass in CI
+- [ ] About page renders at `/about` route without errors
+- [ ] Navigation link for "About" correctly routes to the page and shows active state
+- [ ] Page displays company story, mission/values, team members, and milestones
+- [ ] Page follows existing design patterns (dark theme, CSS Modules, Ant Design components)
+- [ ] Page is responsive across mobile (320px+) and desktop viewports
+- [ ] Page meets WCAG 2.1 AA accessibility standards
+- [ ] All unit and E2E tests pass
 
 ---
 
 ## 2. Scope
 
 ### In Scope
-
 | ID | Capability | Priority | Description |
 |----|------------|----------|-------------|
-| F1 | About page route | P0 | Register `/about` route in App.tsx so the existing nav link resolves |
-| F2 | Hero section | P0 | Page hero with company headline and sub-headline |
-| F3 | Mission & Vision section | P0 | Dedicated section communicating company mission and vision |
-| F4 | Company Values section | P0 | Grid of core company values (reuse FeaturesGrid/FeatureCard pattern) |
-| F5 | Company Story / History section | P1 | Brief narrative about company founding and milestones |
-| F6 | Team / Leadership section | P1 | Highlight key leadership or team culture |
-| F7 | CTA Banner | P0 | Call-to-action directing users to Contact or booking |
-| F8 | Responsive layout | P0 | Mobile-first responsive design consistent with existing pages |
-| F9 | E2E tests | P0 | Playwright tests covering page rendering and navigation |
+| F1 | About page route | P0 | Register `/about` route in App.tsx with lazy loading |
+| F2 | Company story section | P0 | Hero-style section with company origin narrative and headline |
+| F3 | Mission & values section | P0 | Display company mission statement and 3-4 core values with icons |
+| F4 | Team section | P0 | Grid of leadership team members with photo placeholder, name, title, and short bio |
+| F5 | Milestones/timeline section | P1 | Key company milestones displayed in a vertical timeline or list format |
+| F6 | CTA banner | P1 | Bottom call-to-action encouraging visitors to contact or book a mission |
+| F7 | Responsive layout | P0 | Mobile-first responsive design consistent with existing pages |
+| F8 | Accessibility | P0 | Semantic HTML, ARIA attributes, keyboard navigation, focus management |
 
 ### Out of Scope
-- Dynamic content from a CMS or API — all content is static
-- Individual team member profile pages
+- Dynamic content management (CMS integration)
+- Team member individual profile pages
+- Careers/job listings section
+- Investor relations or financial information
+- Video or animation-heavy media content
 - Blog or news section
-- Careers/jobs listing
-- Interactive timeline or animations beyond existing patterns
 
 ### Dependencies
-- `@space-tourism/ui` component library (Hero, FeaturesGrid, FeatureCard, MissionStrip, CtaBanner, SectionWrapper)
-- Ant Design 5.17.0 grid system and theme (spaceTheme with dark algorithm)
-- React Router DOM 6.23.0 routing
-- Existing Navbar already links to `/about`
+- `@space-tourism/ui` package (existing reusable components: Hero, FeaturesGrid, MissionStrip, CtaBanner, SectionWrapper)
+- Ant Design component library (Row, Col, Card, Typography, Timeline)
+- React Router DOM (routing, already configured)
+- Existing space theme and design tokens (`spaceTheme.ts`)
 
 ---
 
@@ -65,222 +65,217 @@
 
 ### User Stories
 
-#### US-1: View About Page
-**As a** site visitor **I want** to navigate to the About page **So that** I can learn about Stellar Horizons as a company before considering their services.
+#### US-1: View the About page
+**As a** prospective space tourist **I want** to navigate to the About page **So that** I can learn about Stellar Horizons as a company before considering booking a mission.
 
 **Acceptance Criteria**:
-- [ ] Given I am on any page, when I click the "About" nav link, then I am routed to `/about` and the page renders
-- [ ] Given I am on the About page, when I view the navbar, then the "About" link has `aria-current="page"`
-- [ ] Given I am on the About page, when the page loads, then I see a hero section with a company headline and sub-headline
-- [ ] Given I am on the About page, when I scroll down, then I see mission/vision content, company values, and a CTA banner
-- [ ] Given I am on the About page, when I view the footer, then the global footer is visible with company info and social links
+- [ ] Given the user is on any page, when they click the "About" link in the navigation bar, then they are routed to `/about` and the About page content renders
+- [ ] Given the user is on the About page, when the page loads, then the "About" nav link shows the active state (`aria-current="page"`)
+- [ ] Given the user navigates directly to `/about` via URL, when the page loads, then the About page content renders correctly
 
-#### US-2: View Company Values
-**As a** potential customer **I want** to see the company's core values **So that** I can assess whether the company aligns with my expectations for safety, quality, and innovation.
+#### US-2: Read the company story
+**As a** visitor **I want** to see the company's origin story and headline **So that** I understand who Stellar Horizons is and what they stand for.
 
 **Acceptance Criteria**:
-- [ ] Given I am on the About page, when the values section renders, then I see at least 3 value cards displayed in a responsive grid
-- [ ] Given I am on mobile (<768px), when I view the values section, then the cards stack vertically in a single column
-- [ ] Given I am on desktop (≥992px), when I view the values section, then the cards display in a multi-column layout (up to 3 columns)
+- [ ] Given the user is on the About page, when the hero/story section is visible, then it displays a headline (e.g., "About Stellar Horizons"), a subheadline, and 1-2 paragraphs of company narrative
+- [ ] Given the page is loading, when the user waits, then a loading spinner is shown (Suspense fallback)
 
-#### US-3: Navigate to Contact from About Page
-**As a** interested visitor **I want** a clear call-to-action on the About page **So that** I can easily get in touch after learning about the company.
-
-**Acceptance Criteria**:
-- [ ] Given I am on the About page, when I see the CTA banner, then it displays a headline and a button labeled to contact or book
-- [ ] Given I am on the About page, when I click the CTA button, then I am navigated to `/contact`
-
-#### US-4: Responsive About Page
-**As a** mobile user **I want** the About page to be fully usable on small screens **So that** I have a good experience regardless of device.
+#### US-3: View the company mission and values
+**As a** visitor **I want** to see the mission statement and core values **So that** I understand the company's guiding principles.
 
 **Acceptance Criteria**:
-- [ ] Given I am on a mobile viewport (375px wide), when the About page loads, then there is no horizontal overflow
-- [ ] Given I am on a mobile viewport, when I view all sections, then text is readable and images/cards are appropriately sized
-- [ ] Given I am on a tablet viewport (768px), when I view the page, then the layout adjusts to utilize available space
+- [ ] Given the user scrolls to the mission/values section, when it is visible, then it displays the company mission statement prominently
+- [ ] Given the values are displayed, when the user views them, then 3-4 core values are shown as cards with an icon, title, and short description
+- [ ] Given the user is on mobile, when they view the values section, then the cards stack vertically in a single column
+
+#### US-4: View the leadership team
+**As a** visitor **I want** to see the leadership team members **So that** I can assess the expertise and credibility behind the company.
+
+**Acceptance Criteria**:
+- [ ] Given the user scrolls to the team section, when it is visible, then it displays a grid of 3-6 team members
+- [ ] Given a team member card is displayed, when the user views it, then it shows a circular avatar placeholder, full name, job title, and a 1-2 sentence bio
+- [ ] Given the user is on a mobile viewport (<768px), when they view the team section, then team cards stack in a single column
+- [ ] Given the user is on a desktop viewport (>=768px), when they view the team section, then team cards display in a 2-3 column grid
+
+#### US-5: View company milestones
+**As a** visitor **I want** to see key milestones in the company's history **So that** I can appreciate their track record and experience.
+
+**Acceptance Criteria**:
+- [ ] Given the user scrolls to the milestones section, when it is visible, then it displays 4-6 key milestones with year and description
+- [ ] Given milestones are displayed, when the user views them, then they appear in chronological order
+- [ ] Given the user is on mobile, when they view the milestones, then the timeline adapts to a compact single-column layout
+
+#### US-6: Navigate to contact from About page
+**As a** visitor **I want** a call-to-action on the About page **So that** I can easily proceed to contact or book a mission after learning about the company.
+
+**Acceptance Criteria**:
+- [ ] Given the user scrolls to the bottom of the About page, when the CTA banner is visible, then it displays a headline and a button (e.g., "Get in Touch")
+- [ ] Given the user clicks the CTA button, when the click is registered, then the user is navigated to `/contact`
 
 ### State Diagram
-
 ```
-[Route /about] → [Page Render]
-  → [Hero Section] (static)
-  → [Mission/Vision Section] (static)
-  → [Values Grid Section] (static)
-  → [Company Story Section] (static, if implemented)
-  → [Team Section] (static, if implemented)
-  → [CTA Banner] (static, CTA click → navigate /contact)
+[Initial] → (navigate to /about) → [Loading] → (lazy load complete) → [Rendered]
+[Loading] → (load failure) → [Error Boundary]
+[Error Boundary] → (retry/navigate away) → [Loading]
 ```
-
-> Note: This is a fully static page with no loading/error/empty states required. All content is hardcoded.
 
 ### Business Rules
-
 | ID | Rule | Validation |
 |----|------|------------|
-| BR-1 | All text content is static (no API calls) | No loading spinners or error states needed |
-| BR-2 | Values grid displays between 3 and 6 cards | FeaturesGrid component enforces max 6 |
-| BR-3 | CTA button navigates to `/contact` | Click triggers `navigate('/contact')` via React Router |
-| BR-4 | Page must use the existing spaceTheme | Visual consistency with Landing and Contact pages |
-| BR-5 | Page reuses existing UI components where possible | Minimize new component creation |
+| BR-1 | About page content is static (no API calls required) | Content renders without network requests |
+| BR-2 | Team member data is hardcoded in a constants file | Data defined in `packages/ui/src/constants/` |
+| BR-3 | Milestones data is hardcoded in a constants file | Data defined in `packages/ui/src/constants/` |
+| BR-4 | Page follows the same layout pattern as LandingPage and ContactPage | Visual review against existing pages |
+| BR-5 | Navigation active state must reflect `/about` route | `aria-current="page"` on About link when at `/about` |
 
 ---
 
 ## 4. Data Requirements
 
 ### Sources
-
 | Source | Type | Description |
 |--------|------|-------------|
-| Static content | Hardcoded | All page content defined in component or constants file |
+| Static constants | Local | Team members, milestones, values — all hardcoded |
+| `COMPANY_INFO` | Constant | Existing company info (address, email, tagline) |
+| `NAV_LINKS` | Constant | Existing nav links (already includes `/about`) |
 
 ### Schema
-
 ```typescript
-interface CompanyValue {
+interface TeamMember {
   id: string;
-  icon: string;       // Ant Design icon name (e.g., "SafetyCertificateOutlined")
+  name: string;
+  title: string;
+  bio: string;
+  avatarUrl?: string; // optional, fallback to placeholder
+}
+
+interface Milestone {
+  id: string;
+  year: number;
   title: string;
   description: string;
 }
 
-interface AboutPageContent {
-  hero: {
-    headline: string;
-    subHeadline: string;
-  };
-  mission: {
-    title: string;
-    body: string;
-  };
-  values: CompanyValue[];  // 3–6 items
-  story?: {
-    title: string;
-    body: string;
-  };
-  cta: {
-    headline: string;
-    ctaLabel: string;
-  };
+interface CoreValue {
+  id: string;
+  icon: React.ReactNode; // Ant Design icon
+  title: string;
+  description: string;
 }
 ```
 
 ### State Management
-
-- **Redux**: N/A — no global state needed; page is entirely static
-- **Local**: Minimal — only React Router navigation state
-- **URL**: `/about` route; no query parameters or shareable state needed
+- **Redux**: N/A — no global state needed; page is purely static/presentational
+- **Local**: N/A — no interactive component state beyond standard React Router
+- **URL**: `/about` route registered in React Router; no query params needed
 
 ---
 
 ## 5. UI/UX
 
-- **Wireframes**: No Figma designs provided. Follow the visual pattern established by LandingPage.tsx (Hero → content sections → CTA Banner).
-
+- **Wireframes**: No mockup provided. Follow existing page patterns (LandingPage, ContactPage).
 - **Component structure**:
   ```
   AboutPage
-  ├── Hero (headline: company tagline, subHeadline: brief description)
-  ├── SectionWrapper
-  │   └── MissionStrip (title: "Our Mission", body: mission text)
-  ├── SectionWrapper
-  │   └── FeaturesGrid (sectionTitle: "Our Values", features: CompanyValue[])
-  │       └── FeatureCard × 3–6
-  ├── SectionWrapper (optional P1)
-  │   └── Company Story section (custom or MissionStrip reuse)
-  ├── SectionWrapper (optional P1)
-  │   └── Team/Leadership section
-  └── CtaBanner (headline: "Ready to Explore?", ctaLabel: "Get in Touch")
+  ├── Hero (reuse existing — headline: "About Stellar Horizons", subheadline: company tagline)
+  ├── SectionWrapper (Company Story)
+  │   └── Typography.Paragraph (1-2 paragraphs of narrative)
+  ├── SectionWrapper (Mission & Values)
+  │   ├── MissionStrip (reuse existing — mission statement)
+  │   └── FeaturesGrid (reuse existing — core values as feature cards)
+  ├── SectionWrapper (Our Team)
+  │   └── Row > Col > Card (team member cards in responsive grid)
+  ├── SectionWrapper (Milestones)
+  │   └── Timeline (Ant Design Timeline component or custom list)
+  └── CtaBanner (reuse existing — CTA to /contact)
   ```
-
 - **Responsive**:
-  - Mobile (<768px): Single-column layout, stacked cards, full-width sections, readable font sizes
-  - Tablet (768–991px): Two-column grid for value cards
-  - Desktop (≥992px): Three-column grid for value cards, max-width 1200px centered content
-
+  - Mobile (<768px): Single-column layout, stacked cards, compact timeline
+  - Desktop (>=768px): Multi-column grids (2-3 cols for team, values), full-width hero and CTA
+  - Consistent padding: `4rem 1.5rem` (matches ContactPage pattern)
+  - Max width: `1200px` centered (matches ContactPage pattern)
 - **Accessibility**:
   - WCAG 2.1 AA compliance
-  - Keyboard navigation: all interactive elements (CTA button, nav links) focusable and operable via keyboard
-  - Semantic HTML: `<section>`, `<article>`, appropriate headings hierarchy (h1 for hero, h2 for section titles)
+  - Semantic HTML: `<section>`, `<article>`, `<h1>`-`<h3>` hierarchy
   - `aria-labelledby` on sections via SectionWrapper
-  - Sufficient color contrast per existing spaceTheme (light text on dark backgrounds)
-
-- **Design tokens** (from spaceTheme.ts):
-  - Background: `#0A0A0F` (base), `#14141F` (container)
-  - Text: `#E8E8E8` (primary), `#8A8A9A` (secondary)
-  - Primary accent: `#4F8EF7`
-  - Border: `#2A2A3A`
-  - Border radius: 4px
+  - Visible focus indicators on interactive elements (CTA button)
+  - Images (avatar placeholders): `alt` text with team member name
+  - Color contrast: text on dark background meets 4.5:1 ratio (existing theme compliant)
 
 ---
 
 ## 6. Non-Functional Requirements
 
-- **Performance**: Page load < 1000ms (static content, no API calls); Lighthouse performance score ≥ 90; no additional bundle impact beyond page component
-- **Browser support**: Chrome (latest 2), Firefox (latest 2), Safari (latest 2), Edge (latest 2) — consistent with existing app
-- **i18n**: English only; no RTL support required; no localization infrastructure needed
-- **Security**: No user input on this page; no API calls; no special security considerations. Standard CSP headers apply.
+- **Performance**: Page load < 2s on 3G; lazy-loaded via `React.lazy` + `Suspense`; bundle size for About page chunk < 50KB
+- **Browser support**: Chrome 90+, Firefox 90+, Safari 14+, Edge 90+ (matches existing app support)
+- **i18n**: English only; no RTL support required. All strings hardcoded (consistent with existing pages)
+- **Security**: No user input on this page; no API calls; no security concerns beyond standard CSP headers
 
 ---
 
 ## 7. Integration
 
 ### Affected Packages
-
 | Package | Impact | Changes |
 |---------|--------|---------|
-| `apps/web` | High | Add AboutPage component, register `/about` route in App.tsx |
-| `@space-tourism/ui` | Low | No new components needed — reuse Hero, FeaturesGrid, FeatureCard, MissionStrip, CtaBanner, SectionWrapper |
-| `e2e` | Medium | Add `about.spec.ts` with page rendering and navigation tests |
+| `apps/web` | High | New `AboutPage.tsx` page component; updated `App.tsx` route registration |
+| `packages/ui` | Medium | New constants files (team members, milestones, values); possible new TeamCard component; export updates in `index.ts` |
+| `e2e` | Low | New E2E test spec for About page |
 
 ### API Contracts
-
-N/A — This is a static page with no API calls.
+N/A — The About page is entirely static with no API dependencies.
 
 ---
 
 ## 8. Testing
 
-### Unit
-- [ ] AboutPage component renders without crashing
-- [ ] Hero section displays headline and sub-headline
-- [ ] Values section renders the correct number of value cards (3–6)
-- [ ] CTA button has correct navigation target (`/contact`)
+### Unit Tests
+- [ ] `AboutPage` renders without crashing
+- [ ] `AboutPage` renders hero section with correct headline
+- [ ] `AboutPage` renders mission and values section with expected number of value cards
+- [ ] `AboutPage` renders team section with expected number of team members
+- [ ] `AboutPage` renders milestones section with expected number of milestones
+- [ ] `AboutPage` renders CTA banner with correct label
+- [ ] CTA button navigates to `/contact` on click
+- [ ] Team member cards display name, title, and bio
+- [ ] Milestone items display year and description in chronological order
+- [ ] Accessibility: no axe violations on About page (jest-axe)
 
-### Integration
-- [ ] Navigating to `/about` renders the AboutPage within the app shell (Navbar + Footer)
-- [ ] "About" nav link shows `aria-current="page"` when on `/about`
-- [ ] CTA button click navigates to `/contact`
+### Integration Tests
+- [ ] Navigation from Home to About via navbar link
+- [ ] Navigation from About CTA to Contact page
+- [ ] Active nav link state updates when on `/about`
+- [ ] Lazy loading: About page chunk loads on demand (not in initial bundle)
 
 ### E2E Scenarios (Playwright)
-
-- [ ] E2E-1: **About page loads** — Steps: navigate to `/about`, verify hero headline visible, verify mission section visible, verify values grid has ≥3 cards, verify CTA banner visible, verify footer visible
-- [ ] E2E-2: **Navigation to About** — Steps: navigate to `/`, click "About" nav link, verify URL is `/about`, verify `aria-current="page"` on About link
-- [ ] E2E-3: **CTA navigates to Contact** — Steps: navigate to `/about`, click CTA button, verify URL is `/contact`
-- [ ] E2E-4: **Mobile responsive** — Steps: set viewport to 375×667, navigate to `/about`, verify no horizontal overflow (`scrollWidth <= clientWidth`), verify hamburger menu visible
-- [ ] E2E-5: **Multi-column layout on desktop** — Steps: set viewport to 1280×720, navigate to `/about`, verify value cards are in multi-column layout (card positions differ in Y-axis)
-- **Auth required**: No — public page
+- [ ] E2E-1: Navigate to About page — Steps: navigate to `/`, click "About" nav link, verify URL is `/about`, verify heading "About Stellar Horizons" is visible
+- [ ] E2E-2: About page content sections — Steps: navigate to `/about`, verify company story section visible, verify mission/values section visible, verify team section visible, verify milestones section visible
+- [ ] E2E-3: CTA navigation — Steps: navigate to `/about`, scroll to CTA banner, click CTA button, verify URL is `/contact`
+- [ ] E2E-4: Mobile responsive layout — Steps: set viewport to 375x667, navigate to `/about`, verify page renders without horizontal scroll, verify team cards are stacked vertically
+- [ ] E2E-5: Accessibility check — Steps: navigate to `/about`, run axe accessibility scan, verify no critical or serious violations
+- **Auth required**: No — About page is publicly accessible
 - **Figma reference**: N/A
 
 ---
 
 ## 9. Rollout
 
-- **Feature flag**: N/A — the `/about` nav link already exists in production navigation; the page simply needs to resolve. No feature flag needed for a standard informational page.
+- **Feature flag**: N/A — The About nav link is already visible in production navigation. This is a content page that fills an existing gap.
 - **Phases**:
-  1. Implement P0 items (route, hero, mission, values, CTA, responsive, tests)
-  2. Implement P1 items (company story, team/leadership sections)
-  3. Content review and refinement
+  1. Development: Implement page with static content, unit tests
+  2. Review: Code review + visual QA against existing page patterns
+  3. Deploy: Merge to main and deploy (no phased rollout needed for static content page)
 
 ---
 
 ## 10. Open Questions
-
 | ID | Question | Owner | Due | Status |
 |----|----------|-------|-----|--------|
-| Q1 | What specific company values should be displayed? (Assumed: Safety, Innovation, Sustainability, Excellence based on space-tourism context) | Content/Product | TBD | Open |
-| Q2 | Should the company story section include specific founding year and milestones, or general narrative? (Assumed: general narrative for v1) | Content/Product | TBD | Open |
-| Q3 | Is a team/leadership section needed for v1, or is it deferred? (Assumed: P1, deferred) | Product | TBD | Open |
-| Q4 | Should the hero have a background image? If so, which asset? (Assumed: optional, can use CSS gradient like existing pages) | Design | TBD | Open |
-| Q5 | Is there approved copy/content for the About page, or should placeholder content be used? (Assumed: placeholder content for initial implementation) | Content/Product | TBD | Open |
+| Q1 | What specific team members should be displayed? (Assumed: 4-6 fictional leadership team members with placeholder data) | Product Owner | TBD | Open |
+| Q2 | What specific company milestones should be listed? (Assumed: 4-6 fictional milestones spanning company founding to present) | Product Owner | TBD | Open |
+| Q3 | Should the company story section include a background image or remain text-only with gradient? (Assumed: reuse Hero component with gradient, no custom image) | Design | TBD | Open |
+| Q4 | What core values should be highlighted? (Assumed: 3-4 values such as Safety, Innovation, Accessibility, Discovery) | Product Owner | TBD | Open |
+| Q5 | Should the About page include any statistics/metrics (e.g., "500+ missions completed")? (Assumed: not in v1, can be added later) | Product Owner | TBD | Open |
 
 ---
 
@@ -290,24 +285,23 @@ N/A — This is a static page with no API calls.
 
 | Version | Date | Author | Changes | Status |
 |---------|------|--------|---------|--------|
-| 1.0 | 2026-04-08 | Analyst | Initial requirements | Ready for Architecture Review |
+| 1.0 | 2026-04-08 | Analyst | Initial requirements document | Ready for Architecture Review |
 
 ---
 
 ## 12. Appendix
 
 - **Glossary**:
-  - **Stellar Horizons**: The company brand name for this space-tourism website
-  - **spaceTheme**: The Ant Design theme configuration (`spaceTheme.ts`) defining colors, typography, and dark algorithm
-  - **SectionWrapper**: A reusable layout component providing consistent max-width and padding for page sections
-  - **FeaturesGrid**: A responsive grid component that renders up to 6 FeatureCard items
-  - **MissionStrip**: A full-width content section component with title and body text
-
+  - **Stellar Horizons**: The fictional space tourism company brand name used throughout the application
+  - **CTA**: Call-to-Action — a UI element prompting the user to take a specific action (e.g., "Contact Us" button)
+  - **CSS Modules**: Scoped CSS styling approach where class names are locally scoped to the component
+  - **Lazy loading**: React.lazy + Suspense pattern for code-splitting page components
+  - **SectionWrapper**: Existing UI utility component that provides semantic section markup with `aria-labelledby`
 - **References**:
-  - Existing pages: `apps/web/src/pages/LandingPage.tsx`, `apps/web/src/pages/ContactPage.tsx`
-  - Navigation config: `apps/web/src/navLinks.ts`
-  - App shell: `apps/web/src/App.tsx`
-  - UI components: `packages/ui/src/components/`
-  - Theme: `packages/ui/src/theme/spaceTheme.ts`
-  - E2E fixtures: `e2e/e2e/fixtures.ts`
-  - Playwright config: `e2e/playwright.config.ts`
+  - Existing LandingPage: `apps/web/src/pages/LandingPage.tsx` (layout pattern reference)
+  - Existing ContactPage: `apps/web/src/pages/ContactPage.tsx` (layout pattern reference)
+  - Navigation links: `packages/ui/src/constants/navLinks.ts` (already includes `/about`)
+  - Company info: `packages/ui/src/constants/companyInfo.ts`
+  - Theme config: `packages/ui/src/theme/spaceTheme.ts`
+  - UI component exports: `packages/ui/src/index.ts`
+  - App router: `apps/web/src/App.tsx`
