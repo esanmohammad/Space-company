@@ -1,75 +1,63 @@
-# Requirements: Space Tourism Company — Landing Page & Contact Page
+# Requirements: About Company Page
 
-**Version**: 1.0 | **Date**: 2026-04-03 | **Status**: Ready for Architecture Review
+**Version**: 1.0 | **Date**: 2026-04-08 | **Status**: Ready for Architecture Review
 
 > Status values: `Draft` | `Ready for Analyst Review` | `Pending Clarification` | `Ready for Architecture Review` | `Approved`
 
 ---
 
 ## 0. Original Requirement
+
 > Preserve verbatim. NEVER modify after creation.
 
-**Raw Request**: Build a space tourism company landing page and contact page inside turbo repo with react ant design and minimalist look
-**Date**: 2026-04-03 | **Requestor**: esanmohammad
+**Raw Request**: Add about company page
+**Date**: 2026-04-08 | **Requestor**: Project stakeholder
 
 ---
 
 ## 1. Summary
 
-**Overview**: Build a two-page marketing website for a fictional space tourism company — a landing (home) page and a contact page — inside a Turborepo monorepo using React and Ant Design with a minimalist aesthetic. The site showcases the company's space travel offerings and provides visitors a way to get in touch.
+**Overview**: Add a new "About" page to the Stellar Horizons space-tourism website that presents the company's story, mission, values, and team. The navigation already includes an `/about` link but the page does not yet exist, resulting in a dead route.
 
-**Business Value**: Establishes a professional web presence for the space tourism brand, converts visitor interest into leads via the contact form, and demonstrates a scalable monorepo foundation that can grow to include booking flows, dashboards, and other features.
+**Business Value**: Builds trust and credibility with potential space-tourism customers by showcasing the company's mission, history, and values. Completes a core informational page that is already referenced in the site navigation.
 
 **Success Criteria**:
-- [ ] Turborepo workspace scaffolded with at least one `apps/` application and one `packages/` shared library
-- [ ] Landing page renders hero section, feature highlights, and a call-to-action with minimalist Ant Design styling
-- [ ] Contact page renders a validated contact form that submits successfully
-- [ ] All routes are navigable via a shared navigation bar
-- [ ] Site is responsive across mobile (<768 px), tablet (768–1024 px), and desktop (>1024 px)
-- [ ] No console errors or accessibility violations at WCAG 2.1 AA level
-- [ ] Turbo `build` and `dev` pipelines run without errors
+- [ ] `/about` route renders the About page without errors
+- [ ] Navigation link for "About" correctly routes to the page and shows active state (`aria-current="page"`)
+- [ ] Page follows the existing dark space theme and responsive layout patterns
+- [ ] Page passes WCAG 2.1 AA accessibility checks
+- [ ] All E2E tests for the About page pass in CI
 
 ---
 
 ## 2. Scope
 
 ### In Scope
-| ID  | Capability                        | Priority | Description                                                                                     |
-|-----|-----------------------------------|----------|-------------------------------------------------------------------------------------------------|
-| F1  | Turborepo monorepo scaffold       | P0       | Root `turbo.json`, `package.json` workspaces, `apps/web` and `packages/ui` setup               |
-| F2  | Shared UI package                 | P0       | `packages/ui` — shared Ant Design-based components (Navbar, Footer, Section wrappers)           |
-| F3  | Landing page — Hero section       | P0       | Full-viewport hero with headline, sub-headline, and primary CTA button                          |
-| F4  | Landing page — Features section   | P0       | Grid of 3–4 feature cards (destinations, safety, experience) using Ant Design Card              |
-| F5  | Landing page — About/Mission strip| P1       | Short paragraph about the company mission with a supporting image or background                 |
-| F6  | Landing page — CTA banner         | P1       | Bottom-of-page call-to-action prompting user to contact or learn more                          |
-| F7  | Contact page — Contact form       | P0       | Form with Name, Email, Subject, Message fields and Ant Design Form validation                   |
-| F8  | Contact page — Company info block | P1       | Display fictional address, email, phone alongside the form                                     |
-| F9  | Shared Navbar                     | P0       | Logo/brand name, navigation links (Home, Contact), responsive hamburger on mobile              |
-| F10 | Shared Footer                     | P1       | Copyright, social links (placeholders), tagline                                                 |
-| F11 | Client-side routing               | P0       | React Router v6 routing between `/` (Landing) and `/contact` (Contact)                         |
-| F12 | Minimalist design theme           | P0       | Dark space-inspired palette, ample whitespace, clean typography via Ant Design theme tokens     |
+
+| ID | Capability | Priority | Description |
+|----|------------|----------|-------------|
+| F1 | About page route | P0 | Register `/about` route in App.tsx so the existing nav link resolves |
+| F2 | Hero section | P0 | Page hero with company headline and sub-headline |
+| F3 | Mission & Vision section | P0 | Dedicated section communicating company mission and vision |
+| F4 | Company Values section | P0 | Grid of core company values (reuse FeaturesGrid/FeatureCard pattern) |
+| F5 | Company Story / History section | P1 | Brief narrative about company founding and milestones |
+| F6 | Team / Leadership section | P1 | Highlight key leadership or team culture |
+| F7 | CTA Banner | P0 | Call-to-action directing users to Contact or booking |
+| F8 | Responsive layout | P0 | Mobile-first responsive design consistent with existing pages |
+| F9 | E2E tests | P0 | Playwright tests covering page rendering and navigation |
 
 ### Out of Scope
-- User authentication or accounts
-- Booking / reservation flow
-- Payment processing
-- Backend API or database integration
-- CMS or content management
-- Blog or editorial pages
-- Multi-language / i18n (beyond English)
-- Email delivery for contact form (form submits to a mock handler only)
-- Analytics or tracking scripts
-- Server-side rendering (SSR) or Next.js; Vite is assumed for the web app
+- Dynamic content from a CMS or API — all content is static
+- Individual team member profile pages
+- Blog or news section
+- Careers/jobs listing
+- Interactive timeline or animations beyond existing patterns
 
 ### Dependencies
-- Node.js ≥ 18 LTS
-- pnpm ≥ 8 (assumed workspace manager for Turborepo best practices)
-- React 18
-- Ant Design 5.x
-- React Router v6
-- Vite 5.x (bundler for `apps/web`)
-- TypeScript 5.x
-- Turbo 2.x
+- `@space-tourism/ui` component library (Hero, FeaturesGrid, FeatureCard, MissionStrip, CtaBanner, SectionWrapper)
+- Ant Design 5.17.0 grid system and theme (spaceTheme with dark algorithm)
+- React Router DOM 6.23.0 routing
+- Existing Navbar already links to `/about`
 
 ---
 
@@ -77,303 +65,222 @@
 
 ### User Stories
 
-#### US-1: View the Landing Page
-**As a** prospective space traveller **I want** to see an inspiring landing page when I visit the site **So that** I understand what the company offers and feel motivated to explore further.
+#### US-1: View About Page
+**As a** site visitor **I want** to navigate to the About page **So that** I can learn about Stellar Horizons as a company before considering their services.
 
 **Acceptance Criteria**:
-- [ ] Given I navigate to `/`, when the page loads, then a full-viewport hero section is displayed with a headline, sub-headline, and a "Get in Touch" CTA button
-- [ ] Given I am on the landing page, when the page is fully loaded, then a features section with at least 3 cards (e.g. Destinations, Safety, Experience) is visible below the hero
-- [ ] Given I am on the landing page, when I click the primary CTA button, then I am navigated to `/contact`
-- [ ] Given the page is loaded, when I scroll to the bottom, then a footer with copyright text is visible
+- [ ] Given I am on any page, when I click the "About" nav link, then I am routed to `/about` and the page renders
+- [ ] Given I am on the About page, when I view the navbar, then the "About" link has `aria-current="page"`
+- [ ] Given I am on the About page, when the page loads, then I see a hero section with a company headline and sub-headline
+- [ ] Given I am on the About page, when I scroll down, then I see mission/vision content, company values, and a CTA banner
+- [ ] Given I am on the About page, when I view the footer, then the global footer is visible with company info and social links
 
-#### US-2: Navigate Between Pages
-**As a** site visitor **I want** to use the navigation bar to move between the landing page and contact page **So that** I can explore the site without using the browser back/forward buttons.
-
-**Acceptance Criteria**:
-- [ ] Given I am on any page, when the navbar renders, then I see links labelled "Home" and "Contact"
-- [ ] Given I click "Home", when navigation completes, then the URL is `/` and the landing page content is shown
-- [ ] Given I click "Contact", when navigation completes, then the URL is `/contact` and the contact page content is shown
-- [ ] Given I am on mobile (<768 px), when the navbar renders, then links are hidden behind a hamburger icon
-- [ ] Given I tap the hamburger icon on mobile, when the menu opens, then all navigation links are accessible
-
-#### US-3: Submit the Contact Form
-**As a** prospective customer **I want** to fill in and submit a contact form **So that** I can express interest in space travel packages.
+#### US-2: View Company Values
+**As a** potential customer **I want** to see the company's core values **So that** I can assess whether the company aligns with my expectations for safety, quality, and innovation.
 
 **Acceptance Criteria**:
-- [ ] Given I navigate to `/contact`, when the page loads, then I see a form with Name, Email, Subject, and Message fields and a Submit button
-- [ ] Given I submit the form with all fields empty, when validation runs, then required-field error messages appear beneath each empty field
-- [ ] Given I enter an invalid email format, when I blur or submit, then an inline error "Please enter a valid email" is shown
-- [ ] Given I fill all fields correctly, when I click Submit, then the form shows a success notification ("Message sent! We'll be in touch.") and the form resets
-- [ ] Given a submission is in progress, when the submit button is clicked again, then it is disabled and shows a loading spinner
+- [ ] Given I am on the About page, when the values section renders, then I see at least 3 value cards displayed in a responsive grid
+- [ ] Given I am on mobile (<768px), when I view the values section, then the cards stack vertically in a single column
+- [ ] Given I am on desktop (≥992px), when I view the values section, then the cards display in a multi-column layout (up to 3 columns)
 
-#### US-4: View Company Contact Information
-**As a** site visitor **I want** to see the company's address, email, and phone number on the contact page **So that** I can reach them via channels other than the form.
+#### US-3: Navigate to Contact from About Page
+**As a** interested visitor **I want** a clear call-to-action on the About page **So that** I can easily get in touch after learning about the company.
 
 **Acceptance Criteria**:
-- [ ] Given I navigate to `/contact`, when the page loads, then a company info block shows a fictional address, email address, and phone number
-- [ ] Given I view the contact page on desktop, when the layout renders, then the form and info block appear side-by-side
-- [ ] Given I view the contact page on mobile, when the layout renders, then the info block stacks above or below the form
+- [ ] Given I am on the About page, when I see the CTA banner, then it displays a headline and a button labeled to contact or book
+- [ ] Given I am on the About page, when I click the CTA button, then I am navigated to `/contact`
 
-#### US-5: Experience Responsive Design
-**As a** mobile user **I want** the site to be fully usable on my phone **So that** I can browse space travel options on any device.
+#### US-4: Responsive About Page
+**As a** mobile user **I want** the About page to be fully usable on small screens **So that** I have a good experience regardless of device.
 
 **Acceptance Criteria**:
-- [ ] Given any page is loaded at viewport width <768 px, when I scroll, then there is no horizontal overflow
-- [ ] Given any page is loaded at viewport width <768 px, when the hero section renders, then typography scales to remain readable (min 16 px body)
-- [ ] Given any page is loaded at viewport width ≥1024 px, when feature cards render, then they display in a multi-column grid
+- [ ] Given I am on a mobile viewport (375px wide), when the About page loads, then there is no horizontal overflow
+- [ ] Given I am on a mobile viewport, when I view all sections, then text is readable and images/cards are appropriately sized
+- [ ] Given I am on a tablet viewport (768px), when I view the page, then the layout adjusts to utilize available space
 
 ### State Diagram
 
 ```
-Contact Form States:
-
-[idle] → (user fills form) → [dirty]
-[dirty] → (submit clicked, validation fails) → [invalid] → (user corrects) → [dirty]
-[dirty] → (submit clicked, validation passes) → [submitting]
-[submitting] → (mock success) → [success] → (3s auto-reset OR user dismisses) → [idle]
-[submitting] → (mock error) → [error] → (retry) → [submitting]
-
-Navigation States:
-
-[/] ←→ (navbar link / CTA button) ←→ [/contact]
+[Route /about] → [Page Render]
+  → [Hero Section] (static)
+  → [Mission/Vision Section] (static)
+  → [Values Grid Section] (static)
+  → [Company Story Section] (static, if implemented)
+  → [Team Section] (static, if implemented)
+  → [CTA Banner] (static, CTA click → navigate /contact)
 ```
 
+> Note: This is a fully static page with no loading/error/empty states required. All content is hardcoded.
+
 ### Business Rules
-| ID   | Rule                                                                                      | Validation                                              |
-|------|-------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| BR-1 | Name field: min 2 characters, max 100 characters, letters and spaces only                | Ant Design Form rule; regex `/^[a-zA-Z\s]{2,100}$/`    |
-| BR-2 | Email field: valid RFC 5322 email format                                                  | Ant Design built-in `type: 'email'` rule                |
-| BR-3 | Subject field: min 3 characters, max 150 characters                                      | Ant Design Form `min`/`max` rules                       |
-| BR-4 | Message field: min 10 characters, max 1000 characters                                    | Ant Design Form `min`/`max` rules                       |
-| BR-5 | Submit button disabled while form is submitting                                           | Button `loading` prop tied to submission state          |
-| BR-6 | On successful mock submission, form resets to empty state                                 | Ant Design `form.resetFields()` after success           |
-| BR-7 | Feature cards on landing page: minimum 3, maximum 6                                      | Hardcoded content array in component                    |
+
+| ID | Rule | Validation |
+|----|------|------------|
+| BR-1 | All text content is static (no API calls) | No loading spinners or error states needed |
+| BR-2 | Values grid displays between 3 and 6 cards | FeaturesGrid component enforces max 6 |
+| BR-3 | CTA button navigates to `/contact` | Click triggers `navigate('/contact')` via React Router |
+| BR-4 | Page must use the existing spaceTheme | Visual consistency with Landing and Contact pages |
+| BR-5 | Page reuses existing UI components where possible | Minimize new component creation |
 
 ---
 
 ## 4. Data Requirements
 
 ### Sources
-| Source             | Type         | Description                                                         |
-|--------------------|--------------|---------------------------------------------------------------------|
-| Static content     | Hardcoded    | Hero copy, feature card copy, company info — no external API        |
-| Contact form       | Mock handler | `setTimeout`-based mock submit returning success after 1.5 s        |
-| Theme tokens       | Ant Design   | Color palette, spacing, typography via `ConfigProvider` theme object |
+
+| Source | Type | Description |
+|--------|------|-------------|
+| Static content | Hardcoded | All page content defined in component or constants file |
 
 ### Schema
 
 ```typescript
-// packages/ui/src/types.ts
-
-export interface FeatureCard {
+interface CompanyValue {
   id: string;
-  icon: string;          // Ant Design icon component name or emoji fallback
+  icon: string;       // Ant Design icon name (e.g., "SafetyCertificateOutlined")
   title: string;
   description: string;
 }
 
-export interface CompanyInfo {
-  address: string;
-  email: string;
-  phone: string;
-  tagline: string;
-}
-
-export interface ContactFormValues {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-export type FormStatus = 'idle' | 'dirty' | 'submitting' | 'success' | 'error';
-
-// Ant Design theme token overrides
-export interface SpaceTheme {
-  colorPrimary: string;       // e.g. '#4F8EF7' (space blue)
-  colorBgBase: string;        // e.g. '#0A0A0F' (near-black)
-  colorTextBase: string;      // e.g. '#E8E8E8'
-  borderRadius: number;       // e.g. 4
-  fontFamily: string;
+interface AboutPageContent {
+  hero: {
+    headline: string;
+    subHeadline: string;
+  };
+  mission: {
+    title: string;
+    body: string;
+  };
+  values: CompanyValue[];  // 3–6 items
+  story?: {
+    title: string;
+    body: string;
+  };
+  cta: {
+    headline: string;
+    ctaLabel: string;
+  };
 }
 ```
 
 ### State Management
-- **Local (useState / useReducer)**: Contact form status (`FormStatus`), form field values managed by Ant Design Form instance
-- **Context**: Theme tokens passed via Ant Design `ConfigProvider` at app root
-- **Redux / Zustand**: Not required — no shared cross-page state needed
-- **URL**: Current route managed by React Router v6 (`BrowserRouter`)
+
+- **Redux**: N/A — no global state needed; page is entirely static
+- **Local**: Minimal — only React Router navigation state
+- **URL**: `/about` route; no query parameters or shareable state needed
 
 ---
 
 ## 5. UI/UX
 
-### Wireframes
-No Figma file provided. Layout described textually below; wireframes are assumed to be created during design phase.
+- **Wireframes**: No Figma designs provided. Follow the visual pattern established by LandingPage.tsx (Hero → content sections → CTA Banner).
 
-### Component Structure
+- **Component structure**:
+  ```
+  AboutPage
+  ├── Hero (headline: company tagline, subHeadline: brief description)
+  ├── SectionWrapper
+  │   └── MissionStrip (title: "Our Mission", body: mission text)
+  ├── SectionWrapper
+  │   └── FeaturesGrid (sectionTitle: "Our Values", features: CompanyValue[])
+  │       └── FeatureCard × 3–6
+  ├── SectionWrapper (optional P1)
+  │   └── Company Story section (custom or MissionStrip reuse)
+  ├── SectionWrapper (optional P1)
+  │   └── Team/Leadership section
+  └── CtaBanner (headline: "Ready to Explore?", ctaLabel: "Get in Touch")
+  ```
 
-```
-apps/web/src/
-├── main.tsx                          # React root, BrowserRouter, ConfigProvider
-├── App.tsx                           # Route definitions (/, /contact)
-├── pages/
-│   ├── LandingPage.tsx               # Composes Hero, Features, Mission, CtaBanner
-│   └── ContactPage.tsx               # Composes ContactForm, CompanyInfoBlock
-└── ...
+- **Responsive**:
+  - Mobile (<768px): Single-column layout, stacked cards, full-width sections, readable font sizes
+  - Tablet (768–991px): Two-column grid for value cards
+  - Desktop (≥992px): Three-column grid for value cards, max-width 1200px centered content
 
-packages/ui/src/
-├── components/
-│   ├── Navbar/
-│   │   ├── Navbar.tsx                # Ant Design Menu / Drawer for mobile
-│   │   └── index.ts
-│   ├── Footer/
-│   │   ├── Footer.tsx
-│   │   └── index.ts
-│   ├── Hero/
-│   │   ├── Hero.tsx                  # Full-viewport section, headline, CTA Button
-│   │   └── index.ts
-│   ├── FeatureCard/
-│   │   ├── FeatureCard.tsx           # Ant Design Card, icon, title, description
-│   │   └── index.ts
-│   ├── FeaturesGrid/
-│   │   ├── FeaturesGrid.tsx          # Ant Design Row/Col grid of FeatureCards
-│   │   └── index.ts
-│   ├── MissionStrip/
-│   │   ├── MissionStrip.tsx          # Full-width section with company blurb
-│   │   └── index.ts
-│   ├── CtaBanner/
-│   │   ├── CtaBanner.tsx             # Bottom banner with CTA button
-│   │   └── index.ts
-│   ├── ContactForm/
-│   │   ├── ContactForm.tsx           # Ant Design Form with validation
-│   │   └── index.ts
-│   ├── CompanyInfoBlock/
-│   │   ├── CompanyInfoBlock.tsx      # Address, email, phone display
-│   │   └── index.ts
-│   └── SectionWrapper/
-│       ├── SectionWrapper.tsx        # Consistent padding/max-width wrapper
-│       └── index.ts
-├── theme/
-│   └── spaceTheme.ts                 # Ant Design ConfigProvider token overrides
-└── types.ts
-```
+- **Accessibility**:
+  - WCAG 2.1 AA compliance
+  - Keyboard navigation: all interactive elements (CTA button, nav links) focusable and operable via keyboard
+  - Semantic HTML: `<section>`, `<article>`, appropriate headings hierarchy (h1 for hero, h2 for section titles)
+  - `aria-labelledby` on sections via SectionWrapper
+  - Sufficient color contrast per existing spaceTheme (light text on dark backgrounds)
 
-### Responsive Behaviour
-| Breakpoint      | Navbar              | Hero Typography | Feature Cards        | Contact Layout      |
-|-----------------|---------------------|-----------------|----------------------|---------------------|
-| Mobile <768 px  | Hamburger + Drawer  | 32 px headline  | 1 column stack       | Single column stack |
-| Tablet 768–1024 | Inline links        | 48 px headline  | 2 column grid        | Single column stack |
-| Desktop >1024   | Inline links        | 64 px headline  | 3–4 column grid      | Two-column side-by-side |
-
-### Design — Minimalist Space Theme
-- **Background**: Near-black `#0A0A0F` or `#0D0D1A`
-- **Primary Accent**: Electric blue `#4F8EF7` (Ant Design `colorPrimary`)
-- **Text Primary**: Off-white `#E8E8E8`
-- **Text Secondary**: Muted grey `#8A8A9A`
-- **Cards**: Slightly lighter background `#14141F`, subtle border `#2A2A3A`
-- **Typography**: Clean sans-serif (system font stack or Inter); large headline weights
-- **Whitespace**: Generous section padding (min 80 px vertical)
-- **No decorative clutter**: Icons used sparingly; imagery limited to hero background (starfield/space image or CSS gradient)
-
-### Accessibility
-- WCAG 2.1 AA compliance
-- Colour contrast ratio ≥ 4.5:1 for all body text on dark backgrounds
-- All interactive elements keyboard-navigable (Tab, Enter, Space)
-- Ant Design Form fields have associated `<label>` elements
-- Images (if any) include descriptive `alt` text
-- Hamburger menu button has `aria-label="Open navigation"`
-- Focus indicators visible on all focusable elements
+- **Design tokens** (from spaceTheme.ts):
+  - Background: `#0A0A0F` (base), `#14141F` (container)
+  - Text: `#E8E8E8` (primary), `#8A8A9A` (secondary)
+  - Primary accent: `#4F8EF7`
+  - Border: `#2A2A3A`
+  - Border radius: 4px
 
 ---
 
 ## 6. Non-Functional Requirements
 
-- **Performance**: First Contentful Paint < 2 s on broadband; Lighthouse performance score ≥ 85; total initial JS bundle < 300 KB gzipped (code-splitting Ant Design icons as needed)
-- **Build time**: Turbo `build` pipeline completes in < 60 s on first run, with cache hits < 5 s on subsequent runs
-- **Browser support**: Chrome 110+, Firefox 110+, Safari 16+, Edge 110+; no IE support
-- **i18n**: English only (en-US); no RTL requirement
-- **Security**: No user data persisted; contact form submission is a client-side mock only; no API keys or secrets in source code; dependencies kept up to date via lockfile
-- **TypeScript**: Strict mode enabled; no `any` types without explicit justification
+- **Performance**: Page load < 1000ms (static content, no API calls); Lighthouse performance score ≥ 90; no additional bundle impact beyond page component
+- **Browser support**: Chrome (latest 2), Firefox (latest 2), Safari (latest 2), Edge (latest 2) — consistent with existing app
+- **i18n**: English only; no RTL support required; no localization infrastructure needed
+- **Security**: No user input on this page; no API calls; no special security considerations. Standard CSP headers apply.
 
 ---
 
 ## 7. Integration
 
 ### Affected Packages
-| Package          | Impact | Changes                                                                      |
-|------------------|--------|------------------------------------------------------------------------------|
-| `apps/web`       | High   | New React application; Vite config, routes, page composition                 |
-| `packages/ui`    | High   | New shared component library; all presentational components and theme tokens |
-| Root workspace   | High   | `turbo.json`, root `package.json`, pnpm workspace config                     |
+
+| Package | Impact | Changes |
+|---------|--------|---------|
+| `apps/web` | High | Add AboutPage component, register `/about` route in App.tsx |
+| `@space-tourism/ui` | Low | No new components needed — reuse Hero, FeaturesGrid, FeatureCard, MissionStrip, CtaBanner, SectionWrapper |
+| `e2e` | Medium | Add `about.spec.ts` with page rendering and navigation tests |
 
 ### API Contracts
-No real API. Mock submission handler:
 
-```
-ContactForm mock submit:
-  Input:  ContactFormValues { name, email, subject, message }
-  Action: await new Promise(resolve => setTimeout(resolve, 1500))
-  Output: { success: true, message: "Message received" }
-
-  On simulated error (optional toggle for testing):
-  Output: throws Error("Network error")
-```
+N/A — This is a static page with no API calls.
 
 ---
 
 ## 8. Testing
 
 ### Unit
-- [ ] `FeatureCard` renders title, description, and icon correctly
-- [ ] `Navbar` renders "Home" and "Contact" links
-- [ ] `Navbar` renders hamburger button at mobile viewport width
-- [ ] `ContactForm` shows validation errors when submitted empty
-- [ ] `ContactForm` shows email validation error for invalid email
-- [ ] `ContactForm` disables submit button while submitting
-- [ ] `ContactForm` shows success notification and resets on successful mock submit
-- [ ] `CompanyInfoBlock` renders address, email, and phone
+- [ ] AboutPage component renders without crashing
+- [ ] Hero section displays headline and sub-headline
+- [ ] Values section renders the correct number of value cards (3–6)
+- [ ] CTA button has correct navigation target (`/contact`)
 
 ### Integration
-- [ ] Navigating from `/` to `/contact` via navbar "Contact" link renders the contact page
-- [ ] Navigating from `/contact` to `/` via navbar "Home" link renders the landing page
-- [ ] CTA button on landing page navigates to `/contact`
-- [ ] `ConfigProvider` applies space theme tokens to all Ant Design components
-- [ ] Form submission flow: fill → submit → loading state → success state → reset
+- [ ] Navigating to `/about` renders the AboutPage within the app shell (Navbar + Footer)
+- [ ] "About" nav link shows `aria-current="page"` when on `/about`
+- [ ] CTA button click navigates to `/contact`
 
 ### E2E Scenarios (Playwright)
-- [ ] **E2E-1: Landing page hero renders** — Steps: navigate to `/`; assert hero headline is visible; assert CTA button is visible
-- [ ] **E2E-2: Navigation works** — Steps: navigate to `/`; click "Contact" in navbar; assert URL is `/contact`; click "Home"; assert URL is `/`
-- [ ] **E2E-3: Contact form validation** — Steps: navigate to `/contact`; click Submit without filling fields; assert error messages visible for all required fields
-- [ ] **E2E-4: Contact form happy path** — Steps: navigate to `/contact`; fill Name, Email, Subject, Message with valid data; click Submit; assert loading spinner appears; assert success notification appears; assert form fields are cleared
-- [ ] **E2E-5: Mobile navbar** — Steps: set viewport to 375×812; navigate to `/`; assert hamburger button visible; click hamburger; assert navigation drawer opens with "Home" and "Contact" links
-- [ ] **E2E-6: Responsive no overflow** — Steps: set viewport to 375×812; navigate to `/`; scroll page; assert no horizontal scrollbar present
-- **Auth required**: No
-- **Figma reference**: N/A (no Figma file provided)
+
+- [ ] E2E-1: **About page loads** — Steps: navigate to `/about`, verify hero headline visible, verify mission section visible, verify values grid has ≥3 cards, verify CTA banner visible, verify footer visible
+- [ ] E2E-2: **Navigation to About** — Steps: navigate to `/`, click "About" nav link, verify URL is `/about`, verify `aria-current="page"` on About link
+- [ ] E2E-3: **CTA navigates to Contact** — Steps: navigate to `/about`, click CTA button, verify URL is `/contact`
+- [ ] E2E-4: **Mobile responsive** — Steps: set viewport to 375×667, navigate to `/about`, verify no horizontal overflow (`scrollWidth <= clientWidth`), verify hamburger menu visible
+- [ ] E2E-5: **Multi-column layout on desktop** — Steps: set viewport to 1280×720, navigate to `/about`, verify value cards are in multi-column layout (card positions differ in Y-axis)
+- **Auth required**: No — public page
+- **Figma reference**: N/A
 
 ---
 
 ## 9. Rollout
 
-- **Feature flag**: N/A — this is a greenfield project; entire site is the initial release
+- **Feature flag**: N/A — the `/about` nav link already exists in production navigation; the page simply needs to resolve. No feature flag needed for a standard informational page.
 - **Phases**:
-  1. **Phase 1 — Internal**: Scaffold Turborepo, `apps/web`, `packages/ui`; implement all components; run dev server locally
-  2. **Phase 2 — QA**: Run unit, integration, and E2E tests; fix accessibility and performance issues; Lighthouse audit
-  3. **Phase 3 — GA**: Deploy static build (e.g., Vercel, Netlify, or GitHub Pages); verify production build via Turbo pipeline
+  1. Implement P0 items (route, hero, mission, values, CTA, responsive, tests)
+  2. Implement P1 items (company story, team/leadership sections)
+  3. Content review and refinement
 
 ---
 
 ## 10. Open Questions
 
-| ID  | Question                                                                                                                   | Owner      | Due        | Status |
-|-----|----------------------------------------------------------------------------------------------------------------------------|------------|------------|--------|
-| Q1  | Should the company have a real name and brand identity, or is a placeholder name (e.g. "AstroVoyage") acceptable?          | Requestor  | 2026-04-07 | Open   |
-| Q2  | Is pnpm the intended package manager, or should npm/yarn be used for the Turborepo workspace?                              | Requestor  | 2026-04-07 | Open   |
-| Q3  | Should `apps/web` use Vite + React, or is Next.js (App Router) preferred for the web app inside the monorepo?             | Requestor  | 2026-04-07 | Open   |
-| Q4  | Is a starfield/space hero background image required, or is a CSS gradient (dark-to-deep-blue) acceptable as a default?     | Requestor  | 2026-04-07 | Open   |
-| Q5  | Should the contact form POST to a real backend endpoint in a future phase, and if so, is there an existing API base URL?   | Requestor  | 2026-04-10 | Open   |
-| Q6  | Are social media links in the footer real (e.g., Twitter, LinkedIn handles) or placeholders with `#` hrefs?               | Requestor  | 2026-04-07 | Open   |
-| Q7  | Should the monorepo include a `packages/eslint-config` and `packages/tsconfig` for shared tooling, per Turborepo best practices? | Engineer | 2026-04-07 | Open |
+| ID | Question | Owner | Due | Status |
+|----|----------|-------|-----|--------|
+| Q1 | What specific company values should be displayed? (Assumed: Safety, Innovation, Sustainability, Excellence based on space-tourism context) | Content/Product | TBD | Open |
+| Q2 | Should the company story section include specific founding year and milestones, or general narrative? (Assumed: general narrative for v1) | Content/Product | TBD | Open |
+| Q3 | Is a team/leadership section needed for v1, or is it deferred? (Assumed: P1, deferred) | Product | TBD | Open |
+| Q4 | Should the hero have a background image? If so, which asset? (Assumed: optional, can use CSS gradient like existing pages) | Design | TBD | Open |
+| Q5 | Is there approved copy/content for the About page, or should placeholder content be used? (Assumed: placeholder content for initial implementation) | Content/Product | TBD | Open |
 
 ---
 
@@ -381,31 +288,26 @@ ContactForm mock submit:
 
 > When updating: use `~~strikethrough~~` for old text, add new text after, update version, set status to `Ready for Analyst Review`.
 
-| Version | Date       | Author  | Changes         | Status                          |
-|---------|------------|---------|-----------------|----------------------------------|
-| 1.0     | 2026-04-03 | Analyst | Initial draft   | Ready for Architecture Review   |
+| Version | Date | Author | Changes | Status |
+|---------|------|--------|---------|--------|
+| 1.0 | 2026-04-08 | Analyst | Initial requirements | Ready for Architecture Review |
 
 ---
 
 ## 12. Appendix
 
-### Glossary
-- **Turborepo**: A high-performance build system for JavaScript/TypeScript monorepos by Vercel, configured via `turbo.json`
-- **Monorepo**: A single repository containing multiple packages or applications (`apps/`, `packages/`)
-- **Ant Design (AntD)**: A React UI component library by Alibaba, providing a comprehensive set of production-ready components
-- **ConfigProvider**: Ant Design's root context component for applying global theme token overrides
-- **Minimalist**: Design philosophy emphasising whitespace, limited colour palette, and removal of non-essential decorative elements
-- **Hero Section**: The first full-viewport section of a landing page, containing the primary headline and call-to-action
-- **CTA (Call to Action)**: A button or link prompting the user to take a desired action (e.g., "Get in Touch")
-- **WCAG 2.1 AA**: Web Content Accessibility Guidelines version 2.1, conformance level AA — the industry-standard accessibility target
-- **FCP (First Contentful Paint)**: A Core Web Vital measuring time until the first content is painted on screen
-- **pnpm**: A fast, disk-efficient Node.js package manager with native workspace support
+- **Glossary**:
+  - **Stellar Horizons**: The company brand name for this space-tourism website
+  - **spaceTheme**: The Ant Design theme configuration (`spaceTheme.ts`) defining colors, typography, and dark algorithm
+  - **SectionWrapper**: A reusable layout component providing consistent max-width and padding for page sections
+  - **FeaturesGrid**: A responsive grid component that renders up to 6 FeatureCard items
+  - **MissionStrip**: A full-width content section component with title and body text
 
-### References
-- [Turborepo Documentation](https://turbo.build/repo/docs)
-- [Ant Design 5.x Documentation](https://ant.design/docs/react/introduce)
-- [React Router v6 Documentation](https://reactrouter.com/en/main)
-- [React 18 Documentation](https://react.dev)
-- [Vite Documentation](https://vitejs.dev)
-- [WCAG 2.1 Guidelines](https://www.w3.org/TR/WCAG21/)
-- [Playwright Documentation](https://playwright.dev)
+- **References**:
+  - Existing pages: `apps/web/src/pages/LandingPage.tsx`, `apps/web/src/pages/ContactPage.tsx`
+  - Navigation config: `apps/web/src/navLinks.ts`
+  - App shell: `apps/web/src/App.tsx`
+  - UI components: `packages/ui/src/components/`
+  - Theme: `packages/ui/src/theme/spaceTheme.ts`
+  - E2E fixtures: `e2e/e2e/fixtures.ts`
+  - Playwright config: `e2e/playwright.config.ts`

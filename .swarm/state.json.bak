@@ -3,129 +3,44 @@
   "stack": "react",
   "stages": {
     "analyze": {
-      "status": "skipped",
-      "agentIds": [
-        "d6c5f4e1-031d-4c61-bc2d-26e532c0dd34"
-      ],
-      "artifact": "REQUIREMENTS.md",
-      "startedAt": 1775230155283,
-      "sessionId": "291a3963-157b-4cc1-bef7-288348ba4984",
-      "contextSummary": "Sections: 0. Original Requirement, 1. Summary, 2. Scope, 3. Functional Requirements, 4. Data Requirements, 5. UI/UX, 6. Non-Functional Requirements, 7. Integration, 8. Testing, 9. Rollout, 10. Open Questions, 11. Change Tracking, 12. Appendix",
-      "finishedAt": 1775230329546,
-      "stageCost": 0.30693725
-    },
-    "architect": {
-      "status": "skipped",
-      "agentIds": [
-        "223b63e5-ae52-4990-bbaf-57d598e80901"
-      ],
-      "artifact": "SPEC.md",
-      "startedAt": 1775230329921,
-      "sessionId": "c625c6cb-7359-4a0a-ac11-4b6d5dc5089c",
-      "contextSummary": "Architecture: 15 sections. ADRs: ADR-1: Turborepo with pnpm Workspaces as Monorepo Tool; ADR-2: Vite 5.x as Build Tool for `apps/web`; ADR-3: Ant Design 5.x with CSS-in-JS Theme Tokens; ADR-4: Local State Only — No Redux or Zustand; ADR-5: React Router v6 BrowserRouter for Client-Side Routing",
-      "finishedAt": 1775230856242,
-      "stageCost": 0.6675423
-    },
-    "plan": {
-      "status": "skipped",
-      "agentIds": [
-        "514ba86a-8fae-41b3-8211-3aa6f0c3502a"
-      ],
-      "artifact": "TASKS.md",
-      "startedAt": 1775230858000,
-      "sessionId": "42a84150-ebea-4b9e-91aa-39a09dce2b47",
-      "contextSummary": "Tasks: 73 total, 70 parallelizable. Dependencies & Execution Order, Phase 1: Setup, Phase 2: Foundational (GATE — blocks all user stories), Phase 3: User Story 7 — Shared Navbar [P0] (parallel with Phases 4–10), Phase 4: User Story 8 — Shared Footer [P1] (parallel with Phases 3, 5–10), Phase 5: User Story 1 — Landing Page Hero [P0] (parallel with Phases 3–4, 6–10), Phase 6: User Story 2 — Landing Page Features Section [P0] (parallel with Phases 3–5, 7–10), Phase 7: User Story 3 — Landing Page Mi",
-      "finishedAt": 1775231225377,
-      "stageCost": 1.0174593
-    },
-    "build": {
       "status": "running",
       "agentIds": [
-        "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-        "a192ac8e-dc0d-4cb2-81d8-014eda9ba3d4",
-        "2194d47f-4386-4fdd-a6fc-66feabc35f59",
-        "08001738-618e-47d5-80d1-fdb1d8f6290c",
-        "80ae721f-4041-46cf-84e1-f9e374443fb7",
-        "f8caf915-fa45-407a-8271-ba55b15f5c3b",
-        "4b3d29af-8295-4e06-85f7-f7484f780b57",
-        "748bb28a-4b8e-4569-869a-8c4ee2ecb072",
-        "38c9ef11-9e1a-4a74-a06c-369d64abcc42",
-        "8e309c83-7802-49e8-b7e2-1bfb2251722a",
-        "432d81c4-a3fb-4374-b295-bc39d4963248",
-        "763bfa00-ef5d-4427-95a5-128ca28c0f59",
-        "7b9ece3b-a80f-4b4c-a01b-123b9a2e6fca",
-        "a8037efd-b097-4f6b-a6f8-fe4fb39c70b7",
-        "5bf81f36-be1e-41a6-8801-135d6baf4834",
-        "24859c98-5507-4f74-a418-282b03b32296",
-        "efe52714-e1ab-4fc3-8112-344102dae872",
-        "32f33d8c-64e0-4594-bbf0-81df635414c9",
-        "73977e48-8e18-444d-8b03-3e7028c72221",
-        "22677ffe-6a3c-45a0-be95-304683929dbb",
-        "596c6eae-23aa-491a-9f51-645bbd0d800e",
-        "326bf6eb-4d1d-4f58-b67b-782f1fa3b4bf",
-        "c2d5c583-0ad8-4d20-9422-c6968741090a",
-        "8c64887e-6242-43cd-83f7-4e6e13682110",
-        "f643bef0-b090-40b6-992c-b8f224a2337e",
-        "3c777364-a3e5-4f37-b3be-74fb6fd52c07",
-        "10742e47-b930-4dab-9883-5e093b85fd29",
-        "cad750db-61b2-444e-952d-b1bcb8184b57",
-        "bed14569-7102-4497-8b0f-e736e9133e18",
-        "c03c71fc-3238-4646-9573-e3b327387988",
-        "8534ed44-8ce1-4f1b-826e-3d558e7b32d7",
-        "0c514867-3a69-4201-aa57-107b6c41975a",
-        "5974676c-868e-44b0-b447-1544142b0b70",
-        "ea47f6cc-29e7-4e8d-8a74-435cc18fd68f",
-        "502c0c38-cdf4-467f-b020-88a62c0978d1",
-        "5256e62e-1a39-4c8a-8ae2-21538486b2fe",
-        "f114414e-aa72-48d1-871b-7e8d27cfdc08",
-        "668095c3-7f9b-4006-af2f-0d7798a5b692",
-        "cc465158-e854-4fcd-88e9-0227ecb45c42",
-        "8ba6d395-a204-489b-a948-857e23b8354f",
-        "2e0cdf8a-a3c3-41e3-9328-e653089bfdbc",
-        "2d64d6fd-94c2-4352-9325-8db0b39ed220",
-        "ad895004-6ba6-4a0a-a59b-5efafbcf7662",
-        "b5585efe-54d4-40e8-a7f2-5fb3e2101d02",
-        "8671f674-740e-4f2b-a476-c8b64c5cedb2",
-        "98b2d2a6-ba99-40aa-a879-8c2126858a0d",
-        "2563e649-1c10-407e-9ae3-a8646c863628",
-        "c3f733e0-3bcf-49ad-8851-76828003d048",
-        "733cf750-5f2c-411c-b928-1a53a310b818",
-        "2861a895-9ea8-4199-93ca-f49cce9c2719",
-        "3060623b-b810-4837-8526-1c0ee7d6f8f7",
-        "a30d7e48-0db1-46d7-8d84-f28653df66e9",
-        "c4976123-a1b7-47e0-bfdc-296185002cd6",
-        "469d055b-3e70-494e-a37c-469f6b4e9c3a",
-        "ab79962f-9bda-46ac-8c70-6e76c255a914",
-        "88a259fe-1e58-42c9-896f-0e0024807057",
-        "e750cf6e-46dc-4157-990b-37fffeba097c",
-        "535fd807-6d74-41c9-ba87-a3d550494a1c",
-        "df71b0db-62c7-4bf4-badd-e315919f08dd",
-        "a106bf98-bacc-48bf-ab25-4b632ec1b50c",
-        "0154647a-2203-43a6-a1cb-34f2094db754",
-        "e717a8ff-aebf-491c-8285-6c9ea6f4a872",
-        "4574589f-5bb5-46f3-a944-f5913998e858",
-        "434e568b-f7ef-469c-8ef0-99c78412b997",
-        "cc833d98-e2e7-46ef-9461-82cb6be1859a",
-        "b8faa47e-b88a-49b7-b3ed-8a51407361fc",
-        "e0e2638d-02b8-40e6-88ba-46e5bf298036"
+        "697a4a03-c56c-4040-91c5-2117f4d3c322"
       ],
       "artifact": null,
-      "startedAt": 1775285659626,
-      "stageCost": 0.42517454999999993
+      "startedAt": 1775629582242
+    },
+    "architect": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "plan": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "build": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
     },
     "test": {
-      "status": "done",
-      "agentIds": [
-        "a0b62d31-79e7-48a4-bc80-64dae30d79cf"
-      ],
-      "artifact": "TESTPLAN.md",
-      "startedAt": 1775285775682,
-      "sessionId": "28245153-5b3a-4dad-8450-982c551273d3",
-      "contextSummary": "Test plan: 49 test cases. Overview, Test Strategy, Authentication, Test Data, E2E Test Cases, Acceptance Criteria",
-      "finishedAt": 1775290005215,
-      "stageCost": 10.7741413
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
     },
     "evaluate": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "validate": {
+      "status": "pending",
+      "agentIds": [],
+      "artifact": null
+    },
+    "ship": {
       "status": "pending",
       "agentIds": [],
       "artifact": null
@@ -133,530 +48,16 @@
   },
   "agents": [
     {
-      "id": "c5f3fac6-fd7e-467d-91c3-69f0631ea5b0",
-      "name": "sub:Explore codebase for context",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_012txnGjgaqRcq5XakJWaRoo",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775230167685,
-      "finishedAt": 1775230329539,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "d6c5f4e1-031d-4c61-bc2d-26e532c0dd34",
-      "childIds": []
-    },
-    {
-      "id": "c5d23c86-69cf-45af-ad79-25929217882e",
-      "name": "sub:Find writable project director",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_018aRDvie2i35ffHijoqNeF5",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775230576078,
-      "finishedAt": 1775230856232,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "223b63e5-ae52-4990-bbaf-57d598e80901",
-      "childIds": []
-    },
-    {
-      "id": "47148119-13b4-4c7b-bc65-ab45b42ed905",
-      "name": "sub:Find writable project director",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01FmLSGQmVTywsHUpw15b6VV",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231058113,
-      "finishedAt": 1775231225372,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "514ba86a-8fae-41b3-8211-3aa6f0c3502a",
-      "childIds": []
-    },
-    {
-      "id": "7147aebe-0288-4724-949d-ddc8bb1a954f",
-      "name": "sub:Phase 1A: Root config files",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01Gg5kYksZqGLiPqL73UsFzV",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231458680,
-      "finishedAt": 1775232281593,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "71f4588d-3e91-42a4-8ccb-89ec5d3f46e0",
-      "name": "sub:Phase 1B: Shared packages conf",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01FVmc2LZyCtSPGkqssqaf8a",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231464021,
-      "finishedAt": 1775232281595,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "4826f250-488a-43f8-b0da-388e29ff4577",
-      "name": "sub:Phase 1C: packages/ui and apps",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01PZk3v6GEcvWbz4C9PHc7Rd",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231476451,
-      "finishedAt": 1775232281596,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "5d016808-b02e-4d17-90e6-7559997d71d0",
-      "name": "sub:Phase 2A: Types, theme, consta",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01VTNS4JFosDH2pepbmKdjee",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231612898,
-      "finishedAt": 1775232281596,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "1615c38b-f490-4a19-bb13-dd00d006af18",
-      "name": "sub:Phase 2B: SectionWrapper compo",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01LCpPxBHQrogu1AMqC6YUDS",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231625061,
-      "finishedAt": 1775232281597,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "a9494628-f986-4381-ad88-30be25c9cb39",
-      "name": "sub:Phase 3+4: Navbar and Footer c",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01AZEDrMprGT7xbXG59KqiUG",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231759583,
-      "finishedAt": 1775232281597,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "7bf03632-edc6-4c08-b6c7-b79632986bc5",
-      "name": "sub:Phase 5+6: Hero and Features c",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01XfxAjHzoVyDCfgC31sx7wm",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231782777,
-      "finishedAt": 1775232281598,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "993181b1-67a6-4747-b93a-10b8537db7d1",
-      "name": "sub:Phase 7+8+9+10: Mission,CTA,Co",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01K8oRqtyx8v8ut83XPWCbYC",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775231823381,
-      "finishedAt": 1775232281599,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "01b95921-418e-48b9-bac9-2d593f4bf6ba",
-      "childIds": []
-    },
-    {
-      "id": "434e568b-f7ef-469c-8ef0-99c78412b997",
-      "name": "engineer-react",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": 10432,
-      "sessionId": "3ec7009b-3a94-4ef3-a69b-b82266006ee8",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775285659631,
-      "finishedAt": 1775285775167,
-      "cost": {
-        "totalUsd": 0.42517454999999993,
-        "inputTokens": 5,
-        "outputTokens": 953,
-        "cacheReadTokens": 21765,
-        "cacheWriteTokens": 30543,
-        "durationMs": 111034
-      },
-      "output": "All 73 tasks in TASKS.md are already marked complete (`[x]`) and all corresponding files have been implemented. Here's a summary of what exists:\n\n## Project Status: ✅ Complete (73/73 tasks)\n\nThe Space Tourism monorepo is fully implemented across all phases:\n\n### What's Built\n\n| Phase | Tasks | Status |\n|-------|-------|--------|\n| Phase 1: Setup (config, tooling) | T001–T016 | ✅ All complete |\n| Phase 2: Foundation (types, theme, constants) | T017–T027 | ✅ All complete |\n| Phase 3: Navbar component | T028–T031 | ✅ All complete |\n| Phase 4: Footer component | T032–T035 | ✅ All complete |\n| Phase 5: Hero component | T036–T039 | ✅ All complete |\n| Phase 6: Features section | T040–T046 | ✅ All complete |\n| Phase 7: Mission Strip | T047–T050 | ✅ All complete |\n| Phase 8: CTA Banner | T051–T054 | ✅ All complete |\n| Phase 9: Contact Form | T055–T058 | ✅ All complete |\n| Phase 10: Company Info Block | T059–T062 | ✅ All complete |\n| Phase 11: App Assembly | T063–T066 | ✅ All complete |\n| E2E Tests (Playwright) | T067–T070 | ✅ All complete |\n| Final Polish (a11y + bundle) | T071–T073 | ✅ All complete |\n\n### Key Deliverables\n- **Monorepo**: pnpm workspaces + Turborepo with `@space-tourism/ui` shared component library\n- **10 React components** with TypeScript, CSS Modules, and Ant Design (dark space theme)\n- **Unit tests**: Vitest + React Testing Library + `jest-axe` (WCAG 2.1 AA)\n- **E2E tests**: 4 Playwright specs covering landing, navigation, contact form, and mobile navbar\n- **Build**: Vite with manual chunk splitting (`vendor-react` / `vendor-antd`) targeting < 300 KB gzipped\n- **SPA routing**: `_redirects` file for Netlify/Vercel static hosting\n\nNo pending tasks remain — nothing to implement.",
-      "error": null,
-      "parentId": null,
-      "childIds": [
-        "8db46f4e-f226-4b5a-80d5-b9c7a3f16509"
-      ]
-    },
-    {
-      "id": "8db46f4e-f226-4b5a-80d5-b9c7a3f16509",
-      "name": "sub:Explore project structure",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01KGwWSE7XcDjvpKL1WxrvBS",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775285669881,
-      "finishedAt": 1775285775165,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "434e568b-f7ef-469c-8ef0-99c78412b997",
-      "childIds": []
-    },
-    {
-      "id": "a0b62d31-79e7-48a4-bc80-64dae30d79cf",
-      "name": "tester-react",
-      "persona": "tester",
-      "stack": "react",
-      "status": "done",
-      "pid": 12819,
-      "sessionId": "28245153-5b3a-4dad-8450-982c551273d3",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775285775697,
-      "finishedAt": 1775286500915,
-      "cost": {
-        "totalUsd": 0.8853057,
-        "inputTokens": 5,
-        "outputTokens": 33836,
-        "cacheReadTokens": 135269,
-        "cacheWriteTokens": 89912,
-        "durationMs": 721417
-      },
-      "output": "`TESTPLAN.md` has been written to `/Users/esanmohammad/prototyping/Space-company/TESTPLAN.md`.\n\nHere's a summary of what was produced:\n\n---\n\n## What's in TESTPLAN.md\n\n### Structure (all required sections present)\n- **Overview** — feature scope table, risk areas (form state machine, mobile drawer, responsive overflow, bundle size)\n- **Test Strategy** — Vitest + Playwright frameworks, browser matrix (Chromium P0, Firefox/WebKit P1, mobile Chromium P0), parallelisation config, 60/30/10 coverage split\n- **Authentication** — N/A for v1.0 with future storageState guidance\n- **Test Data** — inline fixtures, `vi.useFakeTimers()` guidance for async form tests, E2E form data, mock submit contract\n- **E2E Test Cases** — 49 test cases (TC-001 through TC-049)\n- **Acceptance Criteria** — pass/fail thresholds for unit, E2E, performance, and accessibility\n\n### Test Case Breakdown\n| Category | Framework | Count | Key Coverage |\n|----------|-----------|-------|-------------|\n| E2E | Playwright | 18 (TC-001–TC-018) | All 6 original E2E scenarios + responsive, multi-column, info block |\n| Unit | Vitest | 24 (TC-019–TC-049) | Every component + mock utility + theme tokens |\n| Integration | Vitest | 7 (TC-031, TC-032, TC-040, TC-041, TC-046–TC-049) | Navigation flows, full form lifecycle, theme propagation |\n\n### All User Stories Covered\n- **US-1** (Landing page): TC-001–003, TC-019, TC-024–026, TC-046–048\n- **US-2** (Navigation): TC-004–006, TC-028–032, TC-046–047\n- **US-3** (Contact form): TC-007–010, TC-035–044, TC-049\n- **US-4** (Company info): TC-011, TC-027\n- **US-5** (Responsive): TC-012–018, TC-016–017",
-      "error": null,
-      "parentId": null,
-      "childIds": [],
-      "disallowedTools": [
-        "Bash",
-        "Edit",
-        "NotebookEdit"
-      ],
-      "appendSystemPrompt": "SYSTEM ENFORCEMENT: Your output file MUST be named exactly TESTPLAN.md.\nSYSTEM ENFORCEMENT: TESTPLAN.md MUST contain these sections: ## Overview, ## Test Strategy, ## E2E Test Cases, ## Authentication, ## Test Data, ## Acceptance Criteria.\nSYSTEM ENFORCEMENT: Every E2E test case MUST have: ID (TC-001), title, user flow steps, expected assertions, and the target test file path under e2e/.\nSYSTEM ENFORCEMENT: Do NOT write implementation code. Do NOT modify application source. Only produce TESTPLAN.md.\nSYSTEM ENFORCEMENT: If Figma designs are provided, derive visual test cases (layout, responsiveness, component states) from the designs."
-    },
-    {
-      "id": "cc833d98-e2e7-46ef-9461-82cb6be1859a",
-      "name": "test-runner-vitest-0",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": 20254,
-      "sessionId": "fa80931f-b05e-462a-8532-41a10e2ff439",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775286500925,
-      "finishedAt": 1775288366676,
-      "cost": {
-        "totalUsd": 4.2344179,
-        "inputTokens": 103,
-        "outputTokens": 56283,
-        "cacheReadTokens": 8783865,
-        "cacheWriteTokens": 135382,
-        "durationMs": 1861936
-      },
-      "output": "All tests pass. Here's the final summary:\n\n---\n\n## ✅ Test Implementation Complete\n\n### Results Summary\n\n| Package | Test Files | Tests | Status |\n|---------|-----------|-------|--------|\n| `packages/ui` | 12 files | **94 passed** | ✅ All green |\n| `apps/web` | 2 files | **12 passed** | ✅ All green |\n| **Total** | **14 files** | **106 passed, 0 failed** | ✅ |\n\n### Files Created/Modified\n\n**New test files created:**\n- `packages/ui/src/utils/mockSubmit.test.ts` — TC-043, TC-044 (mockContactSubmit utility)\n- `packages/ui/src/theme/spaceTheme.test.ts` — TC-045 (design token values)\n- `apps/web/src/__tests__/navigation.test.tsx` — TC-046, TC-047 (routing integration)\n- `apps/web/src/__tests__/theme.test.tsx` — TC-048 (ConfigProvider + spaceTheme)\n\n**New config files created:**\n- `packages/ui/vitest.config.ts` — jsdom environment, icon CJS interop, test setup\n- `packages/ui/src/test-setup.ts` — RTL cleanup + `window.matchMedia` mock\n- `apps/web/vitest.config.ts` — jsdom environment, @vitejs/plugin-react\n- `apps/web/src/test-setup.ts` — RTL cleanup + `window.matchMedia` mock\n\n**Test files fixed:**\n- `packages/ui/src/components/ContactForm/ContactForm.test.tsx` — fixed `vi.hoisted()` for mock variables\n- `packages/ui/src/components/Navbar/Navbar.test.tsx` — fixed drawer close assertions + CSS display:none workaround\n- `packages/ui/src/components/MissionStrip/MissionStrip.test.tsx` — fixed background-image URL quote handling\n- `packages/ui/src/utils/mockSubmit.test.ts` — fixed unhandled rejection pattern\n\n**JSON results:** saved to `.swarm/test-results.json`\n\n### Key Fixes Made\n1. **RTL cleanup**: Added `afterEach(cleanup)` setup file since `globals: false` prevents RTL's auto-cleanup\n2. **`window.matchMedia`**: Mocked in setup files (required by AntD responsive grid)\n3. **`@ant-design/icons` CJS interop**: Used `deps.inline` in `packages/ui` config; direct `vi.mock` per icon in `apps/web` navigation tests\n4. **`vi.mock` hoisting**: Used `vi.hoisted()` for variables referenced in mock factories\n5. **AntD Drawer closure**: Checked `.ant-drawer-open` CSS class instead of text visibility (drawer keeps content in DOM with animations)\n6. **CSS display:none**: Removed `css: true` config so jsdom doesn't apply hamburger's `display: none`",
-      "error": null,
-      "parentId": null,
-      "childIds": [
-        "f6bee178-4013-41f9-9f34-35bce448e65b"
-      ]
-    },
-    {
-      "id": "b8faa47e-b88a-49b7-b3ed-8a51407361fc",
-      "name": "test-runner-playwright-1",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": 20255,
-      "sessionId": "a7811243-4884-44e5-be0d-b3b8ce360c49",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775286500928,
-      "finishedAt": 1775290013886,
-      "cost": {
-        "totalUsd": 5.7465675,
-        "inputTokens": 7,
-        "outputTokens": 213,
-        "cacheReadTokens": 274521,
-        "cacheWriteTokens": 1754,
-        "durationMs": 8674
-      },
-      "output": "That background task (Playwright browser install) has already completed successfully — it's what unblocked the E2E test run earlier. All 29/29 tests are passing. No action needed.",
-      "error": null,
-      "parentId": null,
-      "childIds": [
-        "f75260da-0264-4427-9e43-c5da67e20872",
-        "cbaad669-f734-4226-ae22-dc1ca88921ac",
-        "96dc0a1f-c641-4e58-ab98-868b5a892731"
-      ]
-    },
-    {
-      "id": "f6bee178-4013-41f9-9f34-35bce448e65b",
-      "name": "sub:Explore project structure",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01FosUUjv9SEzbsV4LmLZe39",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775286511696,
-      "finishedAt": 1775288366674,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "cc833d98-e2e7-46ef-9461-82cb6be1859a",
-      "childIds": []
-    },
-    {
-      "id": "f75260da-0264-4427-9e43-c5da67e20872",
-      "name": "sub:Explore project structure",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01L49MDfbGTEYitNct8u5UE9",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775286512523,
-      "finishedAt": 1775290005210,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "b8faa47e-b88a-49b7-b3ed-8a51407361fc",
-      "childIds": []
-    },
-    {
-      "id": "cbaad669-f734-4226-ae22-dc1ca88921ac",
-      "name": "sub:Read all existing test files a",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01UMSNzYyVJ9zFBgHBEJn6xU",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775286616141,
-      "finishedAt": 1775290005211,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "b8faa47e-b88a-49b7-b3ed-8a51407361fc",
-      "childIds": []
-    },
-    {
-      "id": "96dc0a1f-c641-4e58-ab98-868b5a892731",
-      "name": "sub:Read all existing unit test fi",
-      "persona": "engineer",
-      "stack": "react",
-      "status": "done",
-      "pid": null,
-      "sessionId": "virtual-toolu_01R7VSPvknwHmFfnqpfVBCDd",
-      "model": "sonnet",
-      "permissionMode": "auto",
-      "startedAt": 1775287051157,
-      "finishedAt": 1775290005212,
-      "cost": {
-        "totalUsd": 0,
-        "inputTokens": 0,
-        "outputTokens": 0,
-        "cacheReadTokens": 0,
-        "cacheWriteTokens": 0,
-        "durationMs": 0
-      },
-      "output": "Completed (parent process finished)",
-      "error": null,
-      "parentId": "b8faa47e-b88a-49b7-b3ed-8a51407361fc",
-      "childIds": []
-    },
-    {
-      "id": "e0e2638d-02b8-40e6-88ba-46e5bf298036",
-      "name": "fix-engineer-react",
-      "persona": "engineer",
+      "id": "697a4a03-c56c-4040-91c5-2117f4d3c322",
+      "name": "analyst-react",
+      "persona": "analyst",
       "stack": "react",
       "status": "running",
-      "pid": 78565,
-      "sessionId": "f14f7a60-ba77-4d57-874f-aa3ab5d63467",
-      "model": "sonnet",
+      "pid": 52217,
+      "sessionId": "643a44eb-5764-4fb7-965c-cfc766d3e100",
+      "model": "opus",
       "permissionMode": "auto",
-      "startedAt": 1775290158017,
+      "startedAt": 1775629582239,
       "finishedAt": null,
       "cost": {
         "totalUsd": 0,
@@ -669,201 +70,68 @@
       "output": "",
       "error": null,
       "parentId": null,
+      "childIds": [
+        "0c81c182-6c79-4574-b206-da5af1fc90bc"
+      ],
+      "disallowedTools": [
+        "Bash",
+        "Edit",
+        "NotebookEdit"
+      ],
+      "appendSystemPrompt": "SYSTEM ENFORCEMENT: Your output file MUST be named exactly REQUIREMENTS.md.\nSYSTEM ENFORCEMENT: REQUIREMENTS.md MUST contain these sections in order: ## 0. Original Requirement, ## 1. Summary, ## 2. Scope, ## 3. Functional Requirements, ## 4. Data Requirements, ## 5. UI/UX, ## 6. Non-Functional Requirements, ## 7. Integration, ## 8. Testing, ## 9. Rollout, ## 10. Open Questions, ## 11. Change Tracking, ## 12. Appendix.\nSYSTEM ENFORCEMENT: Section 3 MUST contain user stories in \"As a [user] I want [thing] So that [reason]\" format with Given/When/Then acceptance criteria.\nSYSTEM ENFORCEMENT: Do NOT write migration plans, decision tables, or free-form documents. Follow the template exactly."
+    },
+    {
+      "id": "0c81c182-6c79-4574-b206-da5af1fc90bc",
+      "name": "sub:Explore codebase structure",
+      "persona": "engineer",
+      "stack": "react",
+      "status": "running",
+      "pid": null,
+      "sessionId": "virtual-toolu_01LGKVWEkxwwAGKPoi5yEwEH",
+      "model": "opus",
+      "permissionMode": "auto",
+      "startedAt": 1775629594320,
+      "finishedAt": null,
+      "cost": {
+        "totalUsd": 0,
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0,
+        "durationMs": 0
+      },
+      "output": "",
+      "error": null,
+      "parentId": "697a4a03-c56c-4040-91c5-2117f4d3c322",
       "childIds": []
     }
   ],
   "totalCost": {
-    "totalUsd": 11.29146565,
-    "inputTokens": 120,
-    "outputTokens": 91285,
-    "cacheReadTokens": 9215420,
-    "cacheWriteTokens": 257591,
-    "durationMs": 2703061
+    "totalUsd": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0,
+    "durationMs": 0
   },
-  "violations": [
-    {
-      "rule": "REQUIREMENTS.md structure",
-      "check": "pattern-match: As a .+ I want .+ So that",
-      "file": "/Users/esanmohammad/prototyping/Space-company/REQUIREMENTS.md",
-      "message": "No user stories found (As a/I want/So that format)",
-      "severity": "warning",
-      "fix": {
-        "type": "insert-pattern",
-        "description": "Add user story template",
-        "patch": "\nAs a [user] I want [feature] So that [benefit]\n\nGiven [context] When [action] Then [result]\n",
-        "location": "after-section",
-        "afterSection": "Functional Requirements"
-      }
-    },
-    {
-      "rule": "REQUIREMENTS.md structure",
-      "check": "word-count: Functional Requirements:20",
-      "file": "/Users/esanmohammad/prototyping/Space-company/REQUIREMENTS.md",
-      "message": "Functional Requirements section has too few words — needs more detail",
-      "severity": "warning",
-      "fix": {
-        "type": "extend-content",
-        "description": "Expand Functional Requirements section",
-        "patch": "\n<!-- TODO: Add more detail to Functional Requirements (minimum 20 words). -->\n",
-        "location": "after-section",
-        "afterSection": "Functional Requirements"
-      }
-    },
-    {
-      "rule": "SPEC.md structure",
-      "check": "section-exists: Data Model",
-      "file": "/Users/esanmohammad/prototyping/Space-company/SPEC.md",
-      "message": "Missing \"Data Model\" section",
-      "severity": "warning",
-      "fix": {
-        "type": "insert-section",
-        "description": "Add ## Data Model section",
-        "patch": "## Data Model\n\nTODO: Define data models and relationships.\n",
-        "location": "append"
-      }
-    },
-    {
-      "rule": "SPEC.md structure",
-      "check": "word-count: Architecture:30",
-      "file": "/Users/esanmohammad/prototyping/Space-company/SPEC.md",
-      "message": "Architecture section needs more detail",
-      "severity": "warning",
-      "fix": {
-        "type": "extend-content",
-        "description": "Expand Architecture section",
-        "patch": "\n<!-- TODO: Add more detail to Architecture (minimum 30 words). -->\n",
-        "location": "after-section",
-        "afterSection": "Architecture"
-      }
-    }
-  ],
-  "updatedAt": 1775290158018,
+  "violations": [],
+  "updatedAt": 1775629639385,
   "mayday": {
-    "active": false,
-    "featureRequest": "Build a space tourism company landing page and contact page inside turbo repo with react ant design and minimalist look",
-    "currentStage": "complete",
+    "active": true,
+    "featureRequest": "Add about company page",
+    "currentStage": "analyze",
     "fixIteration": 0,
     "maxFixIterations": 5,
-    "lastTestOutput": "All 29 tests passed.",
-    "lastTestPassed": true,
-    "failureCount": 0,
+    "lastTestOutput": null,
+    "lastTestPassed": null,
+    "failureCount": null,
     "fixAgentIds": [],
     "userMessages": [],
-    "startedAt": 1775285659549,
+    "startedAt": 1775629582098,
     "pausedAt": null,
     "error": null,
     "maxFixBudgetUsd": 15,
     "approvalRequired": false,
-    "pendingApproval": null,
-    "fixHistory": []
-  },
-  "qualityScores": [
-    {
-      "stage": "analyze",
-      "artifact": "REQUIREMENTS.md",
-      "overall": 75,
-      "dimensions": [
-        {
-          "name": "Completeness",
-          "score": 100,
-          "detail": "7/7 required sections present"
-        },
-        {
-          "name": "User Stories",
-          "score": 0,
-          "detail": "0 user stories found"
-        },
-        {
-          "name": "Acceptance Criteria",
-          "score": 100,
-          "detail": "20 Given/When/Then criteria found"
-        },
-        {
-          "name": "Depth",
-          "score": 100,
-          "detail": "3339 words"
-        }
-      ],
-      "timestamp": 1775230329551
-    },
-    {
-      "stage": "architect",
-      "artifact": "SPEC.md",
-      "overall": 97,
-      "dimensions": [
-        {
-          "name": "Completeness",
-          "score": 86,
-          "detail": "6/7 required sections present"
-        },
-        {
-          "name": "Diagrams",
-          "score": 100,
-          "detail": "4 Mermaid diagrams"
-        },
-        {
-          "name": "ADRs",
-          "score": 100,
-          "detail": "6 Architecture Decision Records"
-        },
-        {
-          "name": "Depth",
-          "score": 100,
-          "detail": "6465 words"
-        }
-      ],
-      "timestamp": 1775230856270
-    },
-    {
-      "stage": "plan",
-      "artifact": "TASKS.md",
-      "overall": 100,
-      "dimensions": [
-        {
-          "name": "Task Count",
-          "score": 100,
-          "detail": "73 tasks defined"
-        },
-        {
-          "name": "Parallelization",
-          "score": 100,
-          "detail": "70/73 tasks marked parallel"
-        },
-        {
-          "name": "File Paths",
-          "score": 100,
-          "detail": "91 file paths for 73 tasks"
-        },
-        {
-          "name": "Acceptance Criteria",
-          "score": 100,
-          "detail": "73 AC markers for 73 tasks"
-        }
-      ],
-      "timestamp": 1775231225380
-    },
-    {
-      "stage": "test",
-      "artifact": "TESTPLAN.md",
-      "overall": 100,
-      "dimensions": [
-        {
-          "name": "Test Cases",
-          "score": 100,
-          "detail": "69 test cases defined"
-        },
-        {
-          "name": "Coverage",
-          "score": 100,
-          "detail": "4/4 sections"
-        },
-        {
-          "name": "Test File Paths",
-          "score": 100,
-          "detail": "18 test file paths"
-        }
-      ],
-      "timestamp": 1775290005220
-    }
-  ]
+    "pendingApproval": null
+  }
 }
