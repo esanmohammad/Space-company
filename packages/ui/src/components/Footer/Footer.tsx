@@ -1,6 +1,6 @@
-import React from 'react';
-import type { SocialLink } from '../../types';
-import styles from './Footer.module.css';
+import React from "react";
+import type { SocialLink } from "../../types";
+import styles from "./Footer.module.css";
 
 export interface FooterProps {
   companyName: string;
@@ -48,7 +48,7 @@ const Footer = React.memo<FooterProps>(function Footer({
   );
 });
 
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";
 
 export { Footer };
 export default Footer;

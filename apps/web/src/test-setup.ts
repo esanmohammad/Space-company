@@ -1,5 +1,5 @@
-import { afterEach, vi } from 'vitest';
-import { cleanup } from '@testing-library/react';
+import { afterEach, vi } from "vitest";
+import { cleanup } from "@testing-library/react";
 
 // Ensure DOM cleanup after each test
 afterEach(() => {
@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 // Mock window.matchMedia (not available in jsdom) — needed by Ant Design responsive grid
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query: string) => ({
     matches: false,

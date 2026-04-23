@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button } from 'antd';
-import styles from './CtaBanner.module.css';
+import React from "react";
+import { Button } from "antd";
+import styles from "./CtaBanner.module.css";
 
 export interface CtaBannerProps {
   headline: string;
@@ -8,7 +8,11 @@ export interface CtaBannerProps {
   onCtaClick: () => void;
 }
 
-const CtaBanner = React.memo<CtaBannerProps>(function CtaBanner({ headline, ctaLabel, onCtaClick }) {
+const CtaBanner = React.memo<CtaBannerProps>(function CtaBanner({
+  headline,
+  ctaLabel,
+  onCtaClick,
+}) {
   return (
     <section className={styles.banner} data-testid="cta-banner">
       <div className={styles.inner}>
@@ -20,6 +24,6 @@ const CtaBanner = React.memo<CtaBannerProps>(function CtaBanner({ headline, ctaL
     </section>
   );
 });
-CtaBanner.displayName = 'CtaBanner';
+CtaBanner.displayName = "CtaBanner";
 export { CtaBanner };
 export default CtaBanner;

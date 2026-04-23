@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, notification } from 'antd';
-import type { ContactFormValues, FormStatus } from '../../types';
-import { mockContactSubmit } from '../../utils/mockSubmit';
-import styles from './ContactForm.module.css';
+import React, { useState } from "react";
+import { Form, Input, Button, notification } from "antd";
+import type { ContactFormValues, FormStatus } from "../../types";
+import { mockContactSubmit } from "../../utils/mockSubmit";
+import styles from "./ContactForm.module.css";
 
 export interface ContactFormProps {
   onSubmit?: (values: ContactFormValues) => Promise<void>;
@@ -10,10 +10,10 @@ export interface ContactFormProps {
 
 export function ContactForm({ onSubmit }: ContactFormProps) {
   const [form] = Form.useForm<ContactFormValues>();
-  const [formStatus, setFormStatus] = useState<FormStatus>('idle');
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
   const handleFinish = async (values: ContactFormValues) => {
-    setFormStatus('submitting');
+    setFormStatus("submitting");
     try {
       if (onSubmit) {
         await onSubmit(values);
@@ -21,21 +21,21 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         await mockContactSubmit(values);
       }
       form.resetFields();
-      setFormStatus('idle');
+      setFormStatus("idle");
       notification.success({
-        message: 'Message sent!',
+        message: "Message sent!",
         description: "We'll get back to you shortly.",
       });
     } catch {
-      setFormStatus('error');
+      setFormStatus("error");
       notification.error({
-        message: 'Failed to send message',
-        description: 'Please try again later.',
+        message: "Failed to send message",
+        description: "Please try again later.",
       });
     }
   };
 
-  const isSubmitting = formStatus === 'submitting';
+  const isSubmitting = formStatus === "submitting";
 
   return (
     <Form
@@ -49,8 +49,11 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         label="Name"
         name="name"
         rules={[
-          { required: true, message: 'Name is required' },
-          { pattern: /^[a-zA-Z\s]{2,100}$/, message: 'Name must be 2–100 letters' },
+          { required: true, message: "Name is required" },
+          {
+            pattern: /^[a-zA-Z\s]{2,100}$/,
+            message: "Name must be 2–100 letters",
+          },
         ]}
       >
         <Input aria-required="true" placeholder="Your full name" />
@@ -60,20 +63,23 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         label="Email"
         name="email"
         rules={[
-          { required: true, message: 'Email is required' },
-          { type: 'email', message: 'Please enter a valid email' },
+          { required: true, message: "Email is required" },
+          {
+            pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Please enter a valid email",
+          },
         ]}
       >
-        <Input aria-required="true" type="email" placeholder="your@email.com" />
+        <Input aria-required="true" placeholder="your@email.com" />
       </Form.Item>
 
       <Form.Item
         label="Subject"
         name="subject"
         rules={[
-          { required: true, message: 'Subject is required' },
-          { min: 3, message: 'Subject must be at least 3 characters' },
-          { max: 150, message: 'Subject must be at most 150 characters' },
+          { required: true, message: "Subject is required" },
+          { min: 3, message: "Subject must be at least 3 characters" },
+          { max: 150, message: "Subject must be at most 150 characters" },
         ]}
       >
         <Input aria-required="true" placeholder="Message subject" />
@@ -83,9 +89,9 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         label="Message"
         name="message"
         rules={[
-          { required: true, message: 'Message is required' },
-          { min: 10, message: 'Message must be at least 10 characters' },
-          { max: 1000, message: 'Message must be at most 1000 characters' },
+          { required: true, message: "Message is required" },
+          { min: 10, message: "Message must be at least 10 characters" },
+          { max: 1000, message: "Message must be at most 1000 characters" },
         ]}
       >
         <Input.TextArea
@@ -103,12 +109,12 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           aria-busy={isSubmitting}
           loading={isSubmitting}
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </Form.Item>
     </Form>
   );
 }
 
-ContactForm.displayName = 'ContactForm';
+ContactForm.displayName = "ContactForm";
 export default ContactForm;

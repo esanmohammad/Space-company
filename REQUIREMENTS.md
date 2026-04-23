@@ -1,6 +1,6 @@
-# Requirements: Change the Company Name to Stark Space
+# Requirements: Change Theme to Light
 
-**Version**: 1.0 | **Date**: 2026-04-08 | **Status**: Ready for Architecture Review
+**Version**: 1.0 | **Date**: 2026-04-09 | **Status**: Ready for Architecture Review
 
 > Status values: `Draft` | `Ready for Analyst Review` | `Pending Clarification` | `Ready for Architecture Review` | `Approved`
 
@@ -9,26 +9,23 @@
 ## 0. Original Requirement
 > Preserve verbatim. NEVER modify after creation.
 
-**Raw Request**: Change the company name Stark Space
-**Date**: 2026-04-08 | **Requestor**: User
+**Raw Request**: change theme to light
+**Date**: 2026-04-09 | **Requestor**: Unknown
 
 ---
 
 ## 1. Summary
 
-**Overview**: Rebrand the space tourism website by changing the company name from the current "Stellar Horizons" to "Stark Space" across all user-facing text, metadata, constants, test assertions, and supporting assets (social links, email, address references). This is a text-level branding change with no structural or functional modifications to the application.
+**Overview**: The Space Tourism web application currently uses a dark theme with near-black backgrounds (`#0A0A0F`, `#14141F`) and light text throughout all component CSS modules and the Ant Design token configuration. This feature replaces the dark theme with a light theme across the entire application — updating `spaceTheme.ts` to use `theme.defaultAlgorithm` and replacing dark color values in all `*.module.css` files.
 
-**Business Value**: Aligns the product with the updated company identity "Stark Space", ensuring consistent branding across the entire web application for customers, partners, and search engines.
+**Business Value**: A light theme improves readability in bright environments, broadens accessibility for users sensitive to dark interfaces, and enables a modern, clean aesthetic suitable for a broader audience.
 
 **Success Criteria**:
-- [ ] Every visible instance of "Stellar Horizons" in the rendered UI is replaced with "Stark Space"
-- [ ] The HTML `<title>` tag reads "Stark Space"
-- [ ] Social media links reference `stark-space` / `starkspace` handles
-- [ ] Contact email updated to `contact@starkspace.com`
-- [ ] Address updated to reference "Stark" branding (e.g., "1 Stark Drive")
-- [ ] All existing unit tests pass with updated assertions
-- [ ] All existing E2E tests pass with updated assertions
-- [ ] No regressions in layout, styling, or navigation
+- [ ] Ant Design theme algorithm is switched from `darkAlgorithm` to `defaultAlgorithm` (light) in `spaceTheme.ts`
+- [ ] All component CSS modules use light backgrounds (white / near-white) and dark text
+- [ ] No dark background color values (`#0A0A0F`, `#14141F`, `#0D1B3E`, `#1a1a4e`, `#1a1a2e`) remain in production CSS
+- [ ] All existing E2E and unit tests pass without modification to test logic
+- [ ] WCAG AA contrast ratios (≥ 4.5:1 for normal text) are maintained between text and backgrounds
 
 ---
 
@@ -37,23 +34,28 @@
 ### In Scope
 | ID | Capability | Priority | Description |
 |----|------------|----------|-------------|
-| F1 | Company name in UI text | P0 | Replace "Stellar Horizons" with "Stark Space" in Navbar brand, Footer company name, Hero subheadline, FeaturesGrid section title, MissionStrip body, and feature card descriptions |
-| F2 | HTML metadata | P0 | Update `<title>` tag in `apps/web/index.html` from "Stellar Horizons" to "Stark Space" |
-| F3 | Company constants | P0 | Update `COMPANY_INFO` in `packages/ui/src/constants/companyInfo.ts` — email, address, tagline to reflect "Stark Space" branding |
-| F4 | Social media links | P1 | Update GitHub, Twitter, and LinkedIn URLs in `apps/web/src/App.tsx` to use Stark Space handles |
-| F5 | Feature card copy | P1 | Update feature card descriptions in `packages/ui/src/constants/featureCards.ts` that reference "Stellar Horizons" |
-| F6 | Test assertions | P0 | Update all hardcoded "Stellar Horizons" strings in unit tests (Navbar.test.tsx, Footer.test.tsx, navigation.test.tsx) and E2E tests |
+| F1 | Ant Design theme token update | P0 | Switch `algorithm` from `theme.darkAlgorithm` to `theme.defaultAlgorithm` in `spaceTheme.ts`; replace dark `colorBgBase`, `colorBgContainer`, `colorBorder`, `colorTextBase`, `colorTextSecondary` tokens with light equivalents |
+| F2 | Navbar light styling | P0 | Replace dark `#0A0A0F` background and `#2A2A3A` border in `Navbar.module.css` with light surface colors; ensure link and hamburger text remain legible on light background |
+| F3 | Hero section light styling | P0 | Replace dark gradient (`#0A0A0F` → `#0D1B3E`) in `Hero.module.css` with a light gradient or light solid background |
+| F4 | CtaBanner light styling | P0 | Replace dark gradient (`#0D1B3E` → `#1a1a4e`) and dark headline text color in `CtaBanner.module.css` |
+| F5 | FeatureCard light styling | P0 | Replace dark `#14141F` card background in `FeatureCard.module.css` with a light card surface color |
+| F6 | Footer light styling | P0 | Replace dark `#0A0A0F` background and muted dark text colors (`#8888aa`, `#555577`) in `Footer.module.css` |
+| F7 | SectionWrapper compatibility | P0 | Verify `SectionWrapper.module.css` renders correctly on a light page background (currently has no background color — confirm it inherits correctly) |
+| F8 | ContactForm light compatibility | P0 | Verify `ContactForm.module.css` and Ant Design form inputs render correctly on a light page background |
+| F9 | MissionStrip light styling | P1 | Review `MissionStrip.module.css` for any dark color values and update to light equivalents |
 
 ### Out of Scope
-- Logo or icon image changes (no image assets identified)
-- Domain name or DNS changes
-- Backend or API changes (static frontend only)
-- SEO metadata beyond `<title>` (e.g., Open Graph tags — none currently exist)
-- Package name changes (`@space-tourism/web`, `@space-tourism/ui` remain unchanged)
-- Theme or color scheme changes
+- Implementing a dark/light toggle or user preference persistence
+- Changing the primary brand accent color (`#4F8EF7`)
+- Redesigning layout, typography scale, or spacing
+- Changing page routing, navigation structure, or business logic
+- Adding new components or pages
+- Updating package names or monorepo configuration
 
 ### Dependencies
-- No external dependencies; this is a self-contained text replacement across the monorepo
+- Ant Design (`antd`) — provides `theme.defaultAlgorithm` and design tokens consumed via `ConfigProvider`
+- All `*.module.css` files in `packages/ui/src/components/`
+- `packages/ui/src/theme/spaceTheme.ts` — central theme config consumed by `apps/web`
 
 ---
 
@@ -61,54 +63,61 @@
 
 ### User Stories
 
-#### US-1: See Updated Brand Name in Navigation
-**As a** site visitor **I want** to see "Stark Space" in the navigation bar **So that** I know I am on the correct company website.
+#### US-1: Light Background on Page Load
+**As a** site visitor **I want** the application to display with a light (white/near-white) background **So that** I can comfortably read content in a bright environment.
 
 **Acceptance Criteria**:
-- [ ] Given the user loads any page, when the Navbar renders, then the brand name displays "Stark Space"
-- [ ] Given the user is on mobile, when the navigation drawer opens, then the brand name displays "Stark Space"
+- [ ] Given I navigate to the landing page (`/`), when the page loads, then the page background is a light color (not black or near-black `#0A0A0F`)
+- [ ] Given I navigate to the contact page (`/contact`), when the page loads, then the page background is light and all form inputs are legible
 
-#### US-2: See Updated Brand Name in Footer
-**As a** site visitor **I want** to see "Stark Space" in the page footer **So that** the branding is consistent throughout the site.
-
-**Acceptance Criteria**:
-- [ ] Given the user scrolls to the footer, when the Footer renders, then the company name displays "Stark Space"
-- [ ] Given the user views the footer, when social links are visible, then they link to Stark Space social profiles
-
-#### US-3: See Updated Brand in Landing Page Content
-**As a** site visitor **I want** the landing page content to reference "Stark Space" **So that** all marketing copy reflects the correct company identity.
+#### US-2: Legible Navigation Bar
+**As a** site visitor **I want** the navbar to use a light surface with dark text links **So that** navigation items are clearly readable against the light background.
 
 **Acceptance Criteria**:
-- [ ] Given the user visits the home page, when the Hero section renders, then the subheadline references "Stark Space"
-- [ ] Given the user views the features section, when the section title renders, then it reads "Why Choose Stark Space"
-- [ ] Given the user views the mission strip, when the body text renders, then it references "Stark Space"
-- [ ] Given the user views feature cards, when descriptions mention the company, then they say "Stark Space"
+- [ ] Given the page loads on desktop, when I view the navbar, then the navbar background is light (not `#0A0A0F`) and nav link text is dark
+- [ ] Given the page loads on mobile, when I open the mobile drawer, then the drawer background is light and drawer link text is dark and legible
 
-#### US-4: See Updated Brand in Browser Tab
-**As a** site visitor **I want** the browser tab to display "Stark Space" **So that** I can identify the site among open tabs.
+#### US-3: Light Hero Section
+**As a** site visitor **I want** the hero section to display on a light gradient or light solid background **So that** the overall page feels coherent with the light theme.
 
 **Acceptance Criteria**:
-- [ ] Given the user opens the site, when the page loads, then the browser tab title shows "Stark Space"
+- [ ] Given I view the hero section, when the page renders, then the hero background gradient or solid color uses light values (no dark navy or black)
+- [ ] Given I view the hero section, then headline and body text maintain WCAG AA contrast against the light hero background
 
-#### US-5: See Updated Contact Information
-**As a** site visitor **I want** the contact details to reflect the Stark Space brand **So that** I can reach the correct company.
+#### US-4: Light Feature Cards
+**As a** site visitor **I want** feature cards to appear on a light card surface **So that** they are distinguishable from the page background while remaining readable.
 
 **Acceptance Criteria**:
-- [ ] Given the user visits the contact page, when company info renders, then the email shows a `@starkspace.com` address
-- [ ] Given the user views the address, when company info renders, then the address references Stark Space branding
+- [ ] Given I view the features grid, when the page renders, then each feature card has a light background (not `#14141F`)
+- [ ] Given I hover over a feature card, then the hover shadow is subtle and appropriate for a light theme context
+
+#### US-5: Light CTA Banner
+**As a** site visitor **I want** the call-to-action banner to use a light background **So that** it is visually consistent with the rest of the light-themed page.
+
+**Acceptance Criteria**:
+- [ ] Given I view the CTA banner, when the page renders, then the banner background is light (not a dark navy gradient)
+- [ ] Given I view the CTA banner headline, then it is displayed in dark text with sufficient contrast on the light background
+
+#### US-6: Light Footer
+**As a** site visitor **I want** the footer to display on a light background **So that** the end of the page is consistent with the overall light theme.
+
+**Acceptance Criteria**:
+- [ ] Given I view the footer, when the page renders, then the footer background is light (not `#0A0A0F`)
+- [ ] Given I view the footer, then all text (tagline, copyright, social icons) is legible in dark color on the light background
 
 ### State Diagram
 ```
-N/A — No state transitions. This is a static text replacement with no behavioral changes.
+[Current: Dark Theme Applied] → (theme CSS + token update deployed) → [Light Theme Applied]
 ```
+No runtime state transitions — this is a static, always-on theme change with no user toggle.
 
 ### Business Rules
 | ID | Rule | Validation |
 |----|------|------------|
-| BR-1 | The string "Stellar Horizons" must not appear anywhere in user-facing rendered output | Visual inspection + text search of rendered DOM |
-| BR-2 | The replacement name must be exactly "Stark Space" (two words, both capitalized) | Grep source for exact casing |
-| BR-3 | Derived identifiers (URLs, email) should use "starkspace" (no hyphen) or "stark-space" (hyphenated) consistently | Review all URL/email references |
-| BR-4 | The tagline and mission copy should be updated to be coherent with the new name | Manual copy review |
+| BR-1 | Primary accent color `#4F8EF7` is preserved — only backgrounds, borders, and body text colors change | Visual inspection — accent still appears on links, icons, hover states |
+| BR-2 | All text/background color pairings must meet WCAG AA (contrast ratio ≥ 4.5:1 for normal text, ≥ 3:1 for large text) | Contrast checker tool or axe-core in automated tests |
+| BR-3 | The Ant Design `spaceTheme` must use `theme.defaultAlgorithm` instead of `theme.darkAlgorithm` | Code review of `spaceTheme.ts` |
+| BR-4 | No component CSS module may retain a dark background color value: `#0A0A0F`, `#14141F`, `#0D1B3E`, `#1a1a4e`, `#1a1a2e` | Grep for these hex values post-implementation |
 
 ---
 
@@ -117,55 +126,79 @@ N/A — No state transitions. This is a static text replacement with no behavior
 ### Sources
 | Source | Type | Description |
 |--------|------|-------------|
-| `packages/ui/src/constants/companyInfo.ts` | Static constant | Central COMPANY_INFO object (email, address, phone, tagline) |
-| `packages/ui/src/constants/featureCards.ts` | Static constant | Feature card descriptions referencing the company name |
-| `apps/web/src/App.tsx` | Component props | Hardcoded brandName and social link URLs |
-| `apps/web/src/pages/LandingPage.tsx` | Component props | Hardcoded headline, subHeadline, sectionTitle, and body text |
-| `apps/web/index.html` | HTML | `<title>` tag |
+| `packages/ui/src/theme/spaceTheme.ts` | Static config | Ant Design `ThemeConfig` object consumed by the app's `ConfigProvider` |
+| `packages/ui/src/components/*/` | Static CSS | Per-component `*.module.css` files with hardcoded dark color values |
 
 ### Schema
-```typescript
-// No schema changes. Existing interfaces remain the same.
-// packages/ui/src/types — CompanyInfo, SocialLink, FeatureCardData unchanged.
 
-// Updated constant values:
-const COMPANY_INFO: CompanyInfo = {
-  address: '1 Stark Drive, Cape Canaveral, FL 32920, USA',  // was "1 Stellar Drive"
-  email: 'contact@starkspace.com',                           // was "contact@stellarhorizons.com"
-  phone: '+1 (800) 867-5309',                                // unchanged
-  tagline: 'Where humanity meets the stars — your journey beyond Earth starts here.', // unchanged or updated
+```typescript
+// packages/ui/src/theme/spaceTheme.ts — expected token shape after change
+import { theme } from 'antd';
+import type { ThemeConfig } from 'antd';
+
+export const spaceTheme: ThemeConfig = {
+  algorithm: theme.defaultAlgorithm, // changed from theme.darkAlgorithm
+  token: {
+    colorPrimary: '#4F8EF7',          // unchanged
+    colorBgBase: string,               // light, e.g. '#FFFFFF'
+    colorBgContainer: string,          // light surface, e.g. '#F5F5F5'
+    colorBorder: string,               // light border, e.g. '#D9D9D9'
+    colorTextBase: string,             // dark text, e.g. '#1A1A1A'
+    colorTextSecondary: string,        // medium-dark, e.g. '#595959'
+    borderRadius: 4,                   // unchanged
+  },
 };
 ```
 
+### Color Mapping Reference
+
+| CSS Property | Current (Dark) | Target (Light) |
+|---|---|---|
+| Page / navbar background | `#0A0A0F` | `#FFFFFF` or `#FAFAFA` |
+| Card / container background | `#14141F` | `#F5F5F5` or `#FFFFFF` |
+| Border color | `#2A2A3A` | `#D9D9D9` |
+| Primary text | `#E8E8E8` | `#1A1A1A` |
+| Secondary / muted text | `#8A8A9A`, `#8888aa`, `#555577` | `#595959` |
+| Hero gradient | `#0A0A0F → #0D1B3E` | `#EAF0FF → #FFFFFF` (assumed) |
+| CTA banner gradient | `#0D1B3E → #1a1a4e` | `#EAF0FF → #D6E4FF` (assumed) |
+| Drawer link hover background | `#1a1a2e` | `#F0F5FF` (assumed) |
+| Accent / primary | `#4F8EF7` | `#4F8EF7` (unchanged) |
+
 ### State Management
-- **Redux**: N/A — no Redux usage in current codebase
-- **Local**: N/A — no component state changes required
-- **URL**: N/A — no URL parameter changes
+- **Redux**: N/A — no runtime theme state; this is a build-time/static change
+- **Local**: N/A
+- **URL**: N/A
 
 ---
 
 ## 5. UI/UX
 
-- **Wireframes**: No wireframe changes. Layout and visual design remain identical; only text content changes.
-- **Component structure**: No structural changes. Affected components receive updated string props/constants:
-  - `Navbar` — `brandName` prop
-  - `Footer` — `companyName` prop
-  - `Hero` — `subHeadline` prop
-  - `FeaturesGrid` — `sectionTitle` prop
-  - `MissionStrip` — `title` and `body` props
-  - `CtaBanner` — no company name reference (unchanged)
-  - `CompanyInfoBlock` — consumes updated `COMPANY_INFO`
-- **Responsive**: No changes. Text replacement does not affect responsive behavior. Verify no text overflow on mobile for "Stark Space" (shorter than "Stellar Horizons" — no risk).
-- **Accessibility**: No changes. WCAG compliance unaffected. Verify screen readers announce "Stark Space" correctly.
+- **Wireframes**: No Figma designs provided. Light theme should use standard clean, minimal light aesthetics consistent with the existing layout and spacing.
+- **Component structure** (unchanged — only colors update):
+  ```
+  App
+  ├── Navbar              ← F2: light background
+  ├── Hero                ← F3: light gradient
+  ├── SectionWrapper
+  │   └── FeaturesGrid
+  │       └── FeatureCard (×N)  ← F5: light card surface
+  ├── MissionStrip        ← F9: light styling review
+  ├── CtaBanner           ← F4: light gradient
+  ├── SectionWrapper
+  │   └── ContactForm     ← F8: compatibility check
+  └── Footer              ← F6: light background
+  ```
+- **Responsive**: No layout changes — responsive breakpoints remain unchanged (mobile < 768px, desktop ≥ 768px). All media queries in CSS modules are preserved.
+- **Accessibility**: WCAG AA minimum. Focus ring colors remain `#4F8EF7` (unchanged). Keyboard navigation unchanged.
 
 ---
 
 ## 6. Non-Functional Requirements
 
-- **Performance**: No impact. Static text replacement only; no new assets, API calls, or bundle size changes.
-- **Browser support**: No changes to browser support matrix. Existing support maintained.
-- **i18n**: N/A — application is English-only. No i18n framework in use.
-- **Security**: No impact. No new inputs, endpoints, or data flows. CSP headers unchanged.
+- **Performance**: No performance impact expected — theme change is CSS/config only. No new assets, API calls, or meaningful bundle size change.
+- **Browser support**: Unchanged — modern evergreen browsers (Chrome, Firefox, Safari, Edge latest 2 versions).
+- **i18n**: N/A — no text or layout changes involved.
+- **Security**: N/A — no data, auth, or network changes.
 
 ---
 
@@ -174,72 +207,81 @@ const COMPANY_INFO: CompanyInfo = {
 ### Affected Packages
 | Package | Impact | Changes |
 |---------|--------|---------|
-| `@space-tourism/ui` | Medium | Update `companyInfo.ts` constants, `featureCards.ts` descriptions |
-| `@space-tourism/web` | Medium | Update `App.tsx` (brandName props, social links), `LandingPage.tsx` (content props), `index.html` (title) |
-| `e2e` | Low | Update any E2E test assertions that match on "Stellar Horizons" |
+| `packages/ui` | High | Update `spaceTheme.ts` token values and algorithm; update dark color values in all `*.module.css` files |
+| `apps/web` | Low | Consumes `spaceTheme` via `ConfigProvider` — no code changes needed if the exported `spaceTheme` interface is preserved |
+| `e2e` | Low | Existing E2E tests should pass as-is (they test functionality/navigation, not color values) |
 
 ### API Contracts
-```
-N/A — No API endpoints exist. This is a static frontend application.
-```
+N/A — no API changes.
 
 ---
 
 ## 8. Testing
 
-### Unit Tests
-- [ ] `packages/ui/src/components/Navbar/Navbar.test.tsx` — Update all assertions from "Stellar Horizons" to "Stark Space"
-- [ ] `packages/ui/src/components/Footer/Footer.test.tsx` — Update all assertions from "Stellar Horizons" to "Stark Space"
-- [ ] `apps/web/src/__tests__/navigation.test.tsx` — Update assertion on line 50 from "Stellar Horizons" to "Stark Space"
+- **Unit**:
+  - [ ] `SectionWrapper.test.tsx` — verify component renders without errors after theme update
+  - [ ] `Hero.test.tsx` — verify Hero renders without errors after CSS background change
+  - [ ] `FeatureCard.test.tsx` — verify card renders correctly after background color change
+  - [ ] `CtaBanner.test.tsx` — verify banner renders correctly after gradient update
+- **Integration**:
+  - [ ] Verify Ant Design `ConfigProvider` receives updated `spaceTheme` with `defaultAlgorithm` and renders form inputs, buttons with light backgrounds
+  - [ ] Verify no dark residual backgrounds appear in component snapshot tests
 
-### Integration Tests
-- [ ] Verify Navbar renders "Stark Space" when consuming updated constants
-- [ ] Verify Footer renders "Stark Space" and updated social links
-- [ ] Verify LandingPage content sections display updated copy
-
-### E2E Scenarios (Playwright)
-- [ ] E2E-1: Landing page brand verification — Steps: navigate to `/`, verify page title is "Stark Space", verify Navbar brand text is "Stark Space", verify Hero subheadline contains "Stark Space", verify features section title contains "Stark Space"
-- [ ] E2E-2: Footer brand verification — Steps: navigate to `/`, scroll to footer, verify company name is "Stark Space", verify social links contain "stark" in URLs
-- [ ] E2E-3: Contact page brand verification — Steps: navigate to `/contact`, verify company info block shows updated email and address
-- [ ] E2E-4: Mobile navigation brand verification — Steps: set viewport to mobile, navigate to `/`, open mobile nav drawer, verify brand name is "Stark Space"
-- **Auth required**: No — public pages only
-- **Figma reference**: N/A
+- **E2E Scenarios** (Playwright):
+  - [ ] E2E-1: Light landing page — Steps: navigate to `/`, assert page background is not dark (`#0A0A0F` absent), assert hero section renders with light background, assert navbar is visible with light background
+  - [ ] E2E-2: Light navbar desktop — Steps: navigate to `/` at 1280px width, assert navbar background is light, assert nav link text is visible
+  - [ ] E2E-3: Light mobile drawer — Steps: navigate to `/` at 375px width, click hamburger button, assert drawer opens with light background and legible dark links
+  - [ ] E2E-4: Light contact page — Steps: navigate to `/contact`, assert page background is light, assert contact form is visible with legible inputs
+  - [ ] E2E-5: Existing suite regression — Steps: run full `contact-form.spec.ts`, `landing.spec.ts`, `mobile-navbar.spec.ts`, `navigation.spec.ts` — all must pass without modification
+  - **Auth required**: No
+  - **Figma reference**: N/A
 
 ---
 
 ## 9. Rollout
-- **Feature flag**: N/A — This is a simple branding change. No feature flag needed; deploy as a single atomic change.
-- **Phases**: 1) Update all source files and constants → 2) Run full test suite → 3) Deploy to production
+
+- **Feature flag**: `light-theme`, default: enabled. This is treated as a permanent one-way migration (no dark fallback) unless Q1 is answered otherwise.
+- **Phases**:
+  1. Internal — update all CSS modules and `spaceTheme.ts`, run unit + E2E tests, verify visually via Playwright screenshots
+  2. GA — merge to main after all tests pass; no staged rollout required (cosmetic-only change)
 
 ---
 
 ## 10. Open Questions
+
 | ID | Question | Owner | Due | Status |
 |----|----------|-------|-----|--------|
-| Q1 | Should the tagline "Where humanity meets the stars..." be updated to mention "Stark Space" explicitly, or remain as-is? Default assumption: keep current tagline unchanged. | Requestor | TBD | Open |
-| Q2 | What are the correct social media handles for Stark Space? Default assumption: `github.com/stark-space`, `twitter.com/starkspace`, `linkedin.com/company/stark-space` | Requestor | TBD | Open |
-| Q3 | Should the contact email be `contact@starkspace.com` or `contact@stark-space.com`? Default assumption: `contact@starkspace.com` | Requestor | TBD | Open |
-| Q4 | Should the street address change from "1 Stellar Drive" to "1 Stark Drive" or remain unchanged? Default assumption: change to "1 Stark Drive" | Requestor | TBD | Open |
-| Q5 | Should package names (`@space-tourism/web`, `@space-tourism/ui`, `space-tourism`) be updated? Default assumption: No — out of scope for this change. | Requestor | TBD | Open |
+| Q1 | Is this a permanent one-way switch to light, or should a future dark/light toggle be supported? Default assumption: permanent one-way switch. | Requestor | 2026-04-16 | Open |
+| Q2 | Is there a specific design mockup or approved light color palette, or should standard Ant Design light defaults with the existing accent `#4F8EF7` be used? Default assumption: use Ant Design defaults. | Requestor | 2026-04-16 | Open |
+| Q3 | Should the hero and CTA banner retain a branded blue-tinted gradient on a light base, or use a pure white/grey solid background? Default assumption: light blue-tinted gradient (e.g., `#EAF0FF → #FFFFFF`) to preserve space brand feel. | Requestor | 2026-04-16 | Open |
+| Q4 | Does `MissionStrip.module.css` contain dark color values that require updating? (File identified but CSS not reviewed in requirements phase.) | Engineer | 2026-04-16 | Open |
+| Q5 | Are there Ant Design component-level overrides (e.g., `components` key in `ThemeConfig`) that also need light-theme tokens? | Engineer | 2026-04-16 | Open |
 
 ---
 
 ## 11. Change Tracking
 
+> When updating: use `~~strikethrough~~` for old text, add new text after, update version, set status to `Ready for Analyst Review`.
+
 | Version | Date | Author | Changes | Status |
 |---------|------|--------|---------|--------|
-| 1.0 | 2026-04-08 | Analyst | Initial requirements based on feature request | Ready for Architecture Review |
+| 1.0 | 2026-04-09 | Analyst | Initial requirements based on feature request "change theme to light" | Ready for Architecture Review |
 
 ---
 
 ## 12. Appendix
-- **Glossary**:
-  - **Stark Space**: The new company name replacing "Stellar Horizons"
-  - **Stellar Horizons**: The current (to be replaced) company name
-  - **COMPANY_INFO**: Centralized constant object in `packages/ui/src/constants/companyInfo.ts` holding company contact details
-- **References**:
-  - Current source: `packages/ui/src/constants/companyInfo.ts`
-  - Current source: `packages/ui/src/constants/featureCards.ts`
-  - App entry: `apps/web/src/App.tsx`
-  - Landing page: `apps/web/src/pages/LandingPage.tsx`
-  - HTML template: `apps/web/index.html`
+
+### Glossary
+- **Dark theme**: The current color scheme using near-black backgrounds (`#0A0A0F`) and light text (`#E8E8E8`)
+- **Light theme**: The target color scheme using white/near-white backgrounds and dark text
+- **`spaceTheme.ts`**: Central Ant Design `ThemeConfig` object at `packages/ui/src/theme/spaceTheme.ts`
+- **`darkAlgorithm`**: Ant Design built-in algorithm that derives dark-mode token values from base tokens
+- **`defaultAlgorithm`**: Ant Design built-in algorithm that derives standard light-mode token values
+- **WCAG AA**: Web Content Accessibility Guidelines Level AA — requires contrast ratio ≥ 4.5:1 for normal text, ≥ 3:1 for large text (≥ 18pt or ≥ 14pt bold)
+
+### References
+- Ant Design Theming: https://ant.design/docs/react/customize-theme
+- Ant Design Algorithms: https://ant.design/docs/react/customize-theme#theme-algorithm
+- WCAG Contrast Checker: https://webaim.org/resources/contrastchecker/
+- Affected theme config: `packages/ui/src/theme/spaceTheme.ts`
+- Affected CSS modules: `Navbar.module.css`, `Hero.module.css`, `CtaBanner.module.css`, `FeatureCard.module.css`, `Footer.module.css`, `SectionWrapper.module.css`, `ContactForm.module.css`, `MissionStrip.module.css`

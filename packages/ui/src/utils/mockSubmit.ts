@@ -1,4 +1,4 @@
-import type { ContactFormValues } from '../types';
+import type { ContactFormValues } from "../types";
 
 export function mockContactSubmit(
   values: ContactFormValues,
@@ -7,7 +7,7 @@ export function mockContactSubmit(
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (options?.simulateError) {
-        reject(new Error('Network error'));
+        reject(new Error("Network error"));
       } else {
         resolve({
           success: true,

@@ -1,0 +1,78 @@
+{
+  "runId": "0fa62914-4fb3-469e-b7f3-0d9d606029bd",
+  "timestamp": 1775642009922,
+  "projectName": "Space-company",
+  "stack": "react",
+  "totalCost": {
+    "totalUsd": 5.308063399999999,
+    "inputTokens": 700,
+    "outputTokens": 62550,
+    "cacheReadTokens": 2955939,
+    "cacheWriteTokens": 264598,
+    "durationMs": 1680433
+  },
+  "stagesSummary": {
+    "analyze": "skipped",
+    "architect": "skipped",
+    "plan": "skipped",
+    "build": "error",
+    "test": "done",
+    "evaluate": "pending",
+    "validate": "done",
+    "ship": "done"
+  },
+  "featureRequest": "Change the company name Stark Space",
+  "durationMs": 539127,
+  "stageBreakdowns": [
+    {
+      "name": "analyze",
+      "cost": 0.4676162,
+      "durationMs": 165308,
+      "status": "skipped"
+    },
+    {
+      "name": "architect",
+      "cost": 0.7659289500000002,
+      "durationMs": 294241,
+      "status": "skipped"
+    },
+    {
+      "name": "plan",
+      "cost": 0.37517089999999986,
+      "durationMs": 103690,
+      "status": "skipped"
+    },
+    {
+      "name": "build",
+      "cost": 2.8073164999999998,
+      "durationMs": -1775640820261,
+      "status": "error"
+    },
+    {
+      "name": "test",
+      "cost": 0,
+      "durationMs": 231775,
+      "status": "done"
+    },
+    {
+      "name": "evaluate",
+      "cost": 0,
+      "durationMs": 0,
+      "status": "pending"
+    },
+    {
+      "name": "validate",
+      "cost": 0,
+      "durationMs": 7988,
+      "status": "done"
+    },
+    {
+      "name": "ship",
+      "cost": 0,
+      "durationMs": 122720,
+      "status": "done"
+    }
+  ],
+  "fixIterations": 1,
+  "activityType": "pipeline"
+}
