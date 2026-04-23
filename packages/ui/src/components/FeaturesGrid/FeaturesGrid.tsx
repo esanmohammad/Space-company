@@ -1,8 +1,8 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-import type { FeatureCardData } from '../../types';
-import { FeatureCard } from '../FeatureCard';
-import styles from './FeaturesGrid.module.css';
+import React from "react";
+import { Row, Col } from "antd";
+import type { FeatureCardData } from "../../types";
+import { FeatureCard } from "../FeatureCard";
+import styles from "./FeaturesGrid.module.css";
 
 export interface FeaturesGridProps {
   features: FeatureCardData[];
@@ -16,12 +16,12 @@ const FeaturesGrid = React.memo<FeaturesGridProps>(function FeaturesGrid({
   if (import.meta.env.DEV) {
     if (features.length < 3) {
       console.warn(
-        `[FeaturesGrid] Expected at least 3 features, but received ${features.length}.`
+        `[FeaturesGrid] Expected at least 3 features, but received ${features.length}.`,
       );
     }
     if (features.length > 6) {
       console.warn(
-        `[FeaturesGrid] Expected at most 6 features, but received ${features.length}. Only the first 6 will be rendered.`
+        `[FeaturesGrid] Expected at most 6 features, but received ${features.length}. Only the first 6 will be rendered.`,
       );
     }
   }
@@ -47,7 +47,7 @@ const FeaturesGrid = React.memo<FeaturesGridProps>(function FeaturesGrid({
   );
 });
 
-FeaturesGrid.displayName = 'FeaturesGrid';
+FeaturesGrid.displayName = "FeaturesGrid";
 
 export { FeaturesGrid };
 export default FeaturesGrid;

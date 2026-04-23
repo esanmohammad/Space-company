@@ -54,3 +54,5 @@
 {"timestamp":1775642007476,"action":"agent-spawned","agentId":"441a9ac4-52f7-47bf-8a14-26642643eca1","agentName":"sub:Explore project structure","persona":"engineer"}
 {"timestamp":1775642009793,"action":"agent-error","agentId":"5bfbd493-9661-4150-85c8-3c9cb4e4775e","agentName":"test-runner-vitest-0","detail":"Process exited with code 143"}
 {"timestamp":1775642009882,"action":"agent-error","agentId":"d4baed9f-891f-441c-a2e5-c300695d9c97","agentName":"test-runner-playwright-1","detail":"Process exited with code 143"}
+{"timestamp":1775714177557,"action":"agent-spawned","agentId":"bb316b80-194d-42bb-a4d4-89b7fabde89b","agentName":"analyst-react","persona":"analyst"}
+{"timestamp":1775714373857,"action":"agent-done","agentId":"bb316b80-194d-42bb-a4d4-89b7fabde89b","agentName":"analyst-react","cost":0.37218090000000004}

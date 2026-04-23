@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './MissionStrip.module.css';
+import React from "react";
+import styles from "./MissionStrip.module.css";
 
 export interface MissionStripProps {
   title: string;
@@ -7,11 +7,19 @@ export interface MissionStripProps {
   backgroundImage?: string;
 }
 
-const MissionStrip = React.memo<MissionStripProps>(function MissionStrip({ title, body, backgroundImage }) {
+const MissionStrip = React.memo<MissionStripProps>(function MissionStrip({
+  title,
+  body,
+  backgroundImage,
+}) {
   return (
     <section
       className={styles.strip}
-      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
+      style={
+        backgroundImage
+          ? { backgroundImage: `url(${backgroundImage})` }
+          : undefined
+      }
       data-testid="mission-strip"
     >
       <div className={styles.inner}>
@@ -21,6 +29,6 @@ const MissionStrip = React.memo<MissionStripProps>(function MissionStrip({ title
     </section>
   );
 });
-MissionStrip.displayName = 'MissionStrip';
+MissionStrip.displayName = "MissionStrip";
 export { MissionStrip };
 export default MissionStrip;

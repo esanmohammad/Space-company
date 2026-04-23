@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button } from 'antd';
-import styles from './Hero.module.css';
+import React from "react";
+import { Button } from "antd";
+import styles from "./Hero.module.css";
 
 export interface HeroProps {
   headline: string;
@@ -22,7 +22,9 @@ const Hero = React.memo<HeroProps>(function Hero({
       className={styles.hero}
       data-testid="hero"
       style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+        backgroundImage: backgroundImage
+          ? `url(${backgroundImage})`
+          : undefined,
       }}
     >
       <div className={styles.content}>
@@ -36,7 +38,7 @@ const Hero = React.memo<HeroProps>(function Hero({
   );
 });
 
-Hero.displayName = 'Hero';
+Hero.displayName = "Hero";
 
 export { Hero };
 export default Hero;

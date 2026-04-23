@@ -1,0 +1,48 @@
+.confirmation {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.successHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.successIcon {
+  font-size: 3rem;
+  color: #52c41a;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.heading {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #555;
+}
+
+.summary {
+  margin-bottom: 1.5rem;
+}
+
+.descriptions {
+  width: 100%;
+}
+
+.passengerList {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.totalPrice {
+  font-size: 1.1rem;
+  color: #1677ff;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+}

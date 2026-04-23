@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { Drawer, Button } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
-import type { NavLink } from '../../types';
-import styles from './Navbar.module.css';
+import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { Drawer } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import type { NavLink } from "../../types";
+import styles from "./Navbar.module.css";
 
 export interface NavbarProps {
   brandName: string;
@@ -11,7 +11,11 @@ export interface NavbarProps {
   currentPath: string;
 }
 
-const Navbar = React.memo<NavbarProps>(function Navbar({ brandName, links, currentPath }) {
+const Navbar = React.memo<NavbarProps>(function Navbar({
+  brandName,
+  links,
+  currentPath,
+}) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
@@ -20,23 +24,25 @@ const Navbar = React.memo<NavbarProps>(function Navbar({ brandName, links, curre
   useEffect(() => {
     if (!drawerOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeDrawer();
+      if (e.key === "Escape") closeDrawer();
     };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [drawerOpen, closeDrawer]);
 
   return (
     <header className={styles.nav} data-testid="navbar">
       <div className={styles.inner}>
-        <Link to="/" className={styles.brand}>{brandName}</Link>
+        <Link to="/" className={styles.brand}>
+          {brandName}
+        </Link>
         <nav aria-label="Main navigation">
           <ul className={styles.desktopLinks}>
             {links.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  aria-current={link.to === currentPath ? 'page' : undefined}
+                  aria-current={link.to === currentPath ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -70,7 +76,7 @@ const Navbar = React.memo<NavbarProps>(function Navbar({ brandName, links, curre
                   <Link
                     to={link.to}
                     className={styles.drawerLink}
-                    aria-current={link.to === currentPath ? 'page' : undefined}
+                    aria-current={link.to === currentPath ? "page" : undefined}
                     onClick={closeDrawer}
                   >
                     {link.label}
@@ -85,7 +91,7 @@ const Navbar = React.memo<NavbarProps>(function Navbar({ brandName, links, curre
   );
 });
 
-Navbar.displayName = 'Navbar';
+Navbar.displayName = "Navbar";
 
 export { Navbar };
 export default Navbar;

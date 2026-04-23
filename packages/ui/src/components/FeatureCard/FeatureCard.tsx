@@ -1,6 +1,6 @@
-import React from 'react';
-import { Card } from 'antd';
-import styles from './FeatureCard.module.css';
+import React from "react";
+import { Card } from "antd";
+import styles from "./FeatureCard.module.css";
 
 export interface FeatureCardProps {
   id: string;
@@ -27,7 +27,7 @@ const FeatureCard = React.memo<FeatureCardProps>(function FeatureCard({
   );
 });
 
-FeatureCard.displayName = 'FeatureCard';
+FeatureCard.displayName = "FeatureCard";
 
 export { FeatureCard };
 export default FeatureCard;

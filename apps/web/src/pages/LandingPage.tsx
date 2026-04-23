@@ -1,18 +1,18 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Hero,
   FeaturesGrid,
   MissionStrip,
   CtaBanner,
   FEATURE_CARDS,
-} from '@space-tourism/ui';
+} from "@space-tourism/ui";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   const handleCtaClick = () => {
-    navigate('/contact');
+    navigate("/booking");
   };
 
   return (
@@ -33,7 +33,7 @@ export default function LandingPage() {
       />
       <CtaBanner
         headline="Ready to Leave Earth Behind?"
-        ctaLabel="Contact Us Today"
+        ctaLabel="Book Your Mission"
         onCtaClick={handleCtaClick}
       />
     </>

@@ -1,27 +1,27 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { expect as jestExpect } from 'vitest';
-import FeatureCard from './FeatureCard';
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
+import { expect as jestExpect } from "vitest";
+import FeatureCard from "./FeatureCard";
 
 jestExpect.extend(toHaveNoViolations);
 
 const defaultProps = {
-  id: 'feature-1',
+  id: "feature-1",
   icon: <span>🚀</span>,
-  title: 'Orbital Launches',
-  description: 'Experience the raw power of lift-off.',
+  title: "Orbital Launches",
+  description: "Experience the raw power of lift-off.",
 };
 
-describe('FeatureCard', () => {
-  it('renders title in an h3 element', () => {
+describe("FeatureCard", () => {
+  it("renders title in an h3 element", () => {
     render(<FeatureCard {...defaultProps} />);
-    const heading = screen.getByRole('heading', { level: 3 });
+    const heading = screen.getByRole("heading", { level: 3 });
     expect(heading).toBeTruthy();
     expect(heading.textContent).toBe(defaultProps.title);
   });
 
-  it('renders description text', () => {
+  it("renders description text", () => {
     render(<FeatureCard {...defaultProps} />);
     expect(screen.getByText(defaultProps.description)).toBeTruthy();
   });
@@ -32,14 +32,14 @@ describe('FeatureCard', () => {
     expect(iconWrapper).not.toBeNull();
   });
 
-  it('root element is <article>', () => {
+  it("root element is <article>", () => {
     const { container } = render(<FeatureCard {...defaultProps} />);
-    const article = container.querySelector('article');
+    const article = container.querySelector("article");
     expect(article).not.toBeNull();
-    expect(article?.getAttribute('data-testid')).toBe('feature-card');
+    expect(article?.getAttribute("data-testid")).toBe("feature-card");
   });
 
-  it('has zero accessibility violations', async () => {
+  it("has zero accessibility violations", async () => {
     const { container } = render(<FeatureCard {...defaultProps} />);
     const results = await axe(container);
     jestExpect(results).toHaveNoViolations();

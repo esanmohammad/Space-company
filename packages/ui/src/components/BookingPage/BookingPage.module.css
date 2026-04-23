@@ -1,0 +1,15 @@
+.page {
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.content {
+  margin-top: 1rem;
+}
+
+@media (max-width: 320px) {
+  .page {
+    padding: 1rem;
+  }
+}
