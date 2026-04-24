@@ -1,3 +1,5 @@
+import "./theme/tokens.css";
+
 // Components
 export { Navbar, default as NavbarDefault } from "./components/Navbar";
 export type { NavbarProps } from "./components/Navbar";
@@ -70,6 +72,7 @@ export type {
   BookingDestination,
   SeatTier,
   BookingFormValues,
+  FooterLinkGroup,
 } from "./types";
 
 // Theme

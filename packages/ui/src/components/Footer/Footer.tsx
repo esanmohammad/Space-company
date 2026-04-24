@@ -1,5 +1,5 @@
 import React from "react";
-import type { SocialLink } from "../../types";
+import type { SocialLink, FooterLinkGroup } from "../../types";
 import styles from "./Footer.module.css";
 
 export interface FooterProps {
@@ -7,6 +7,7 @@ export interface FooterProps {
   tagline: string;
   socialLinks: SocialLink[];
   year?: number;
+  linkGroups?: FooterLinkGroup[];
 }
 
 const Footer = React.memo<FooterProps>(function Footer({
@@ -14,6 +15,7 @@ const Footer = React.memo<FooterProps>(function Footer({
   tagline,
   socialLinks,
   year,
+  linkGroups,
 }) {
   const displayYear = year ?? new Date().getFullYear();
 
@@ -21,6 +23,27 @@ const Footer = React.memo<FooterProps>(function Footer({
     <footer className={styles.footer} data-testid="footer">
       <div className={styles.inner}>
         <p className={styles.tagline}>{tagline}</p>
+
+        {linkGroups && linkGroups.length > 0 && (
+          <div className={styles.linkGroupsRow}>
+            {linkGroups.map((group) => (
+              <div key={group.heading} className={styles.linkGroup}>
+                <p className={styles.linkGroupHeading}>{group.heading}</p>
+                <nav>
+                  {group.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className={styles.linkGroupItem}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            ))}
+          </div>
+        )}
 
         {socialLinks.length > 0 && (
           <ul className={styles.socialLinks}>

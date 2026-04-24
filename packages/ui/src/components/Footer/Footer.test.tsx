@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { axe, toHaveNoViolations } from "jest-axe";
 import { expect as jestExpect } from "vitest";
 import Footer from "./Footer";
-import type { SocialLink } from "../../types";
+import type { SocialLink, FooterLinkGroup } from "../../types";
 
 jestExpect.extend(toHaveNoViolations);
 
@@ -170,6 +170,67 @@ describe("Footer", () => {
         />,
       );
       expect(screen.getByRole("contentinfo")).toBeTruthy();
+    });
+  });
+
+  describe("linkGroups", () => {
+    const TEST_LINK_GROUPS: FooterLinkGroup[] = [
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy Policy", href: "/privacy" },
+          { label: "Terms of Service", href: "/terms" },
+        ],
+      },
+    ];
+
+    it("renders link group headings when linkGroups prop is supplied", () => {
+      render(
+        <Footer
+          companyName="Stark Space"
+          tagline="Reach for the stars."
+          socialLinks={TEST_SOCIAL_LINKS}
+          year={2026}
+          linkGroups={TEST_LINK_GROUPS}
+        />,
+      );
+      expect(screen.getByText("Company")).toBeTruthy();
+      expect(screen.getByText("Legal")).toBeTruthy();
+    });
+
+    it("renders link group anchor elements when linkGroups prop is supplied", () => {
+      render(
+        <Footer
+          companyName="Stark Space"
+          tagline="Reach for the stars."
+          socialLinks={TEST_SOCIAL_LINKS}
+          year={2026}
+          linkGroups={TEST_LINK_GROUPS}
+        />,
+      );
+      const aboutLink = screen.getByRole("link", { name: "About" });
+      expect(aboutLink.getAttribute("href")).toBe("/about");
+      const privacyLink = screen.getByRole("link", { name: "Privacy Policy" });
+      expect(privacyLink.getAttribute("href")).toBe("/privacy");
+    });
+
+    it("does not render link group section when linkGroups is undefined", () => {
+      const { container } = render(
+        <Footer
+          companyName="Stark Space"
+          tagline="Reach for the stars."
+          socialLinks={TEST_SOCIAL_LINKS}
+          year={2026}
+        />,
+      );
+      expect(container.querySelector("nav")).toBeNull();
     });
   });
 

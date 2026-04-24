@@ -8,7 +8,7 @@ export default function ContactPage() {
   return (
     <div
       style={{
-        background: "#0A0A0F",
+        background: "var(--color-bg-base)",
         minHeight: "100vh",
         padding: "4rem 1.5rem",
         boxSizing: "border-box",
@@ -17,7 +17,7 @@ export default function ContactPage() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <Title
           level={1}
-          style={{ color: "#E8E8E8", marginBottom: "2.5rem" }}
+          style={{ color: "var(--color-text-base)", marginBottom: "2.5rem" }}
           data-testid="contact-heading"
         >
           Contact Us

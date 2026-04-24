@@ -3,8 +3,8 @@ import { theme } from "antd";
 import { spaceTheme } from "./spaceTheme";
 
 describe("TC-045: spaceTheme tokens match design spec", () => {
-  it("colorPrimary equals #4F8EF7", () => {
-    expect(spaceTheme.token?.colorPrimary).toBe("#4F8EF7");
+  it("colorPrimary equals #D4AF37", () => {
+    expect(spaceTheme.token?.colorPrimary).toBe("#D4AF37");
   });
 
   it("colorBgBase equals #0A0A0F", () => {
@@ -23,8 +23,12 @@ describe("TC-045: spaceTheme tokens match design spec", () => {
     expect(spaceTheme.token?.colorTextBase).toBe("#E8E8E8");
   });
 
-  it("borderRadius equals 4", () => {
-    expect(spaceTheme.token?.borderRadius).toBe(4);
+  it("colorTextSecondary equals #A0A0B8", () => {
+    expect(spaceTheme.token?.colorTextSecondary).toBe("#A0A0B8");
+  });
+
+  it("borderRadius equals 8", () => {
+    expect(spaceTheme.token?.borderRadius).toBe(8);
   });
 
   it("algorithm includes theme.darkAlgorithm", () => {
