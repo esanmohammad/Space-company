@@ -36,7 +36,7 @@ const loadingFallback = (
       justifyContent: "center",
       alignItems: "center",
       minHeight: "60vh",
-      background: "#0A0A0F",
+      background: "var(--color-bg-base)",
     }}
   >
     <Spin size="large" />
@@ -53,7 +53,7 @@ export default function App() {
         links={NAV_LINKS}
         currentPath={location.pathname}
       />
-      <main>
+      <main style={{ background: "var(--color-bg-base)" }}>
         <Suspense fallback={loadingFallback}>
           <Routes>
             <Route path="/" element={<LandingPage />} />

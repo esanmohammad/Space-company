@@ -1,0 +1,14 @@
+:root {
+  --color-primary: #D4AF37;
+  --color-primary-rgb: 212, 175, 55;
+  --color-bg-base: #0A0A0F;
+  --color-bg-container: #14141F;
+  --color-bg-elevated: #1C1C2E;
+  --color-border: #2A2A3A;
+  --color-text-base: #E8E8E8;
+  --color-text-secondary: #A0A0B8;
+  --color-text-muted: #555577;
+  --border-radius: 8px;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+}

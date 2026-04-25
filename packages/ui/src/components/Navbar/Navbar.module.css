@@ -4,8 +4,8 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #0A0A0F;
-  border-bottom: 1px solid #2A2A3A;
+  background: var(--color-bg-base);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .inner {
@@ -19,7 +19,7 @@
 }
 
 .brand {
-  color: #4F8EF7;
+  color: var(--color-primary);
   font-size: 1.25rem;
   font-weight: 700;
   text-decoration: none;
@@ -30,7 +30,7 @@
 
 .brand:hover,
 .brand:focus {
-  color: #7aaeff;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .desktopLinks li a {
-  color: #c0c0d0;
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.2s;
@@ -51,11 +51,11 @@
 
 .desktopLinks li a:hover,
 .desktopLinks li a:focus {
-  color: #4F8EF7;
+  color: var(--color-primary);
 }
 
 .desktopLinks li a[aria-current="page"] {
-  color: #4F8EF7;
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -68,9 +68,9 @@
 .hamburger {
   display: none;
   background: transparent;
-  border: 1px solid #2A2A3A;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  color: #c0c0d0;
+  color: var(--color-text-secondary);
   cursor: pointer;
   padding: 0.4rem 0.6rem;
   font-size: 1.1rem;
@@ -80,12 +80,12 @@
 
 .hamburger:hover,
 .hamburger:focus {
-  color: #4F8EF7;
-  border-color: #4F8EF7;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .hamburger:focus-visible {
-  outline: 2px solid #4F8EF7;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -115,7 +115,7 @@
 .drawerLink {
   display: block;
   padding: 0.75rem 1rem;
-  color: #c0c0d0;
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-size: 1rem;
   border-radius: 6px;
@@ -124,19 +124,19 @@
 
 .drawerLink:hover,
 .drawerLink:focus {
-  background: #1a1a2e;
-  color: #4F8EF7;
+  background: var(--color-bg-elevated);
+  color: var(--color-primary);
 }
 
 .drawerLink:focus-visible {
-  outline: 2px solid #4F8EF7;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 .drawerLink[aria-current="page"] {
-  color: #4F8EF7;
+  color: var(--color-primary);
   font-weight: 600;
-  background: #1a1a2e;
+  background: var(--color-bg-elevated);
 }
 
 /* Prevent horizontal overflow at 320px */

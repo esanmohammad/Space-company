@@ -11,6 +11,12 @@
   justify-content: flex-end;
 }
 
+.submitRow :global(.ant-btn-primary) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg-base);
+}
+
 @media (max-width: 320px) {
   .form {
     overflow-x: hidden;

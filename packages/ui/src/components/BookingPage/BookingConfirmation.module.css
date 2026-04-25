@@ -10,7 +10,7 @@
 
 .successIcon {
   font-size: 3rem;
-  color: #52c41a;
+  color: var(--color-primary);
   margin-bottom: 0.75rem;
   display: block;
 }
@@ -21,7 +21,7 @@
 }
 
 .subtitle {
-  color: #555;
+  color: var(--color-text-secondary);
 }
 
 .summary {
@@ -39,7 +39,7 @@
 
 .totalPrice {
   font-size: 1.1rem;
-  color: #1677ff;
+  color: var(--color-primary);
 }
 
 .actions {

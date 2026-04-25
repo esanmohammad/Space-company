@@ -99,3 +99,8 @@ export interface BookingFormValues {
   /** Integer ≥ 1 */
   passengerCount: number;
 }
+
+export interface FooterLinkGroup {
+  heading: string;
+  links: Array<{ label: string; href: string }>;
+}

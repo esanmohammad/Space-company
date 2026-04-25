@@ -28,9 +28,14 @@ const Hero = React.memo<HeroProps>(function Hero({
       }}
     >
       <div className={styles.content}>
-        <h1>{headline}</h1>
-        <p>{subHeadline}</p>
-        <Button type="primary" onClick={onCtaClick} size="large">
+        <h1 className={styles.headline}>{headline}</h1>
+        <p className={styles.subHeadline}>{subHeadline}</p>
+        <Button
+          type="primary"
+          onClick={onCtaClick}
+          size="large"
+          className={styles.ctaButton}
+        >
           {ctaLabel}
         </Button>
       </div>
